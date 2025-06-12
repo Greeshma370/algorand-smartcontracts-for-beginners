@@ -101,9 +101,3 @@ algokit project run build
 Use `algokit localnet` or `goal` CLI for deploying and interacting with the contracts.
 
 ---
-
-## 📚 Learn More
-
-* [Algopy Docs](https://github.com/algorandfoundation/algopy)
-* [Algorand Developer Portal](https://developer.algorand.org)
-* [ARC-4 ABI Spec](https://github.com/algorandfoundation/ARCs/blob/main/ARCs/arc-0004.md)
