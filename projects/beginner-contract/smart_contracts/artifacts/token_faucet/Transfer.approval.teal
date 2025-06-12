@@ -1,0 +1,97 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 1 0 1000000
+    // smart_contracts/token_faucet/contract.py:5
+    // class Transfer(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@6
+    pushbytes 0xe9892bef // method "fund()void"
+    txna ApplicationArgs 0
+    match main_fund_route@3
+
+main_after_if_else@10:
+    // smart_contracts/token_faucet/contract.py:5
+    // class Transfer(ARC4Contract):
+    intc_1 // 0
+    return
+
+main_fund_route@3:
+    // smart_contracts/token_faucet/contract.py:6
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub fund
+    intc_0 // 1
+    return
+
+main_bare_routing@6:
+    // smart_contracts/token_faucet/contract.py:5
+    // class Transfer(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@10
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_0 // 1
+    return
+
+
+// smart_contracts.token_faucet.contract.Transfer.fund() -> void:
+fund:
+    // smart_contracts/token_faucet/contract.py:8
+    // assert (Global.current_application_address.balance - Global.current_application_address.min_balance) > 1000000, "No money"
+    global CurrentApplicationAddress
+    acct_params_get AcctBalance
+    assert // account funded
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    -
+    intc_2 // 1000000
+    >
+    assert // No money
+    // smart_contracts/token_faucet/contract.py:9-14
+    // itxn.Payment(
+    //     receiver=Txn.sender,  # The sender is the receiver in this case
+    //     sender= Global.current_application_address,
+    //     amount=1000000,  # Amount in microAlgos
+    //     note=String("Funding the receiver account"),
+    // ).submit()
+    itxn_begin
+    // smart_contracts/token_faucet/contract.py:10
+    // receiver=Txn.sender,  # The sender is the receiver in this case
+    txn Sender
+    // smart_contracts/token_faucet/contract.py:11
+    // sender= Global.current_application_address,
+    global CurrentApplicationAddress
+    // smart_contracts/token_faucet/contract.py:13
+    // note=String("Funding the receiver account"),
+    pushbytes "Funding the receiver account"
+    itxn_field Note
+    // smart_contracts/token_faucet/contract.py:12
+    // amount=1000000,  # Amount in microAlgos
+    intc_2 // 1000000
+    itxn_field Amount
+    itxn_field Sender
+    itxn_field Receiver
+    // smart_contracts/token_faucet/contract.py:9
+    // itxn.Payment(
+    intc_0 // pay
+    itxn_field TypeEnum
+    intc_1 // 0
+    itxn_field Fee
+    // smart_contracts/token_faucet/contract.py:9-14
+    // itxn.Payment(
+    //     receiver=Txn.sender,  # The sender is the receiver in this case
+    //     sender= Global.current_application_address,
+    //     amount=1000000,  # Amount in microAlgos
+    //     note=String("Funding the receiver account"),
+    // ).submit()
+    itxn_submit
+    retsub

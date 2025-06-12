@@ -1,0 +1,56 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    // smart_contracts/creator_only/contract.py:3
+    // class SingleOwner(arc4.ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@6
+    pushbytes 0x8aa5e271 // method "check()void"
+    txna ApplicationArgs 0
+    match main_check_route@3
+
+main_after_if_else@10:
+    // smart_contracts/creator_only/contract.py:3
+    // class SingleOwner(arc4.ARC4Contract):
+    pushint 0 // 0
+    return
+
+main_check_route@3:
+    // smart_contracts/creator_only/contract.py:4
+    // @arc4.abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub check
+    pushint 1 // 1
+    return
+
+main_bare_routing@6:
+    // smart_contracts/creator_only/contract.py:3
+    // class SingleOwner(arc4.ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@10
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    pushint 1 // 1
+    return
+
+
+// smart_contracts.creator_only.contract.SingleOwner.check() -> void:
+check:
+    // smart_contracts/creator_only/contract.py:6
+    // assert Txn.sender == Global.creator_address
+    txn Sender
+    global CreatorAddress
+    ==
+    assert
+    // smart_contracts/creator_only/contract.py:7
+    // log("Authorized call")
+    pushbytes "Authorized call"
+    log
+    retsub

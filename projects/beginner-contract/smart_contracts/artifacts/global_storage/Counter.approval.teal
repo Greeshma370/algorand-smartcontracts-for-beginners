@@ -1,0 +1,175 @@
+#pragma version 10
+#pragma typetrack false
+
+// smart_contracts.global_storage.contract.Counter.__algopy_entrypoint_with_init() -> uint64:
+main:
+    intcblock 0 1
+    bytecblock "counter" "last_changed_by" 0x151f7c75
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/global_storage/contract.py:8
+    // self.counter = GlobalState(UInt64(0))
+    bytec_0 // "counter"
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/global_storage/contract.py:9
+    // self.last_changed_by = GlobalState(Address())
+    bytec_1 // "last_changed_by"
+    global ZeroAddress
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/global_storage/contract.py:6
+    // class Counter(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@9
+    pushbytess 0x7fad9780 0x50ea81cb 0x2fa47328 0x4b5bddfd // method "get_address()address", method "get()uint64", method "increment()void", method "decrement()void"
+    txna ApplicationArgs 0
+    match main_get_address_route@5 main_get_route@6 main_increment_route@7 main_decrement_route@8
+
+main_after_if_else@11:
+    // smart_contracts/global_storage/contract.py:6
+    // class Counter(ARC4Contract):
+    intc_0 // 0
+    return
+
+main_decrement_route@8:
+    // smart_contracts/global_storage/contract.py:24
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub decrement
+    intc_1 // 1
+    return
+
+main_increment_route@7:
+    // smart_contracts/global_storage/contract.py:19
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub increment
+    intc_1 // 1
+    return
+
+main_get_route@6:
+    // smart_contracts/global_storage/contract.py:15
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub get
+    itob
+    bytec_2 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_get_address_route@5:
+    // smart_contracts/global_storage/contract.py:11
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub get_address
+    bytec_2 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_bare_routing@9:
+    // smart_contracts/global_storage/contract.py:6
+    // class Counter(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@11
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_1 // 1
+    return
+
+
+// smart_contracts.global_storage.contract.Counter.get_address() -> bytes:
+get_address:
+    // smart_contracts/global_storage/contract.py:13
+    // return self.last_changed_by.value
+    intc_0 // 0
+    bytec_1 // "last_changed_by"
+    app_global_get_ex
+    assert // check self.last_changed_by exists
+    retsub
+
+
+// smart_contracts.global_storage.contract.Counter.get() -> uint64:
+get:
+    // smart_contracts/global_storage/contract.py:17
+    // return self.counter.value
+    intc_0 // 0
+    bytec_0 // "counter"
+    app_global_get_ex
+    assert // check self.counter exists
+    retsub
+
+
+// smart_contracts.global_storage.contract.Counter.increment() -> void:
+increment:
+    // smart_contracts/global_storage/contract.py:21
+    // self.counter.value += UInt64(1)
+    intc_0 // 0
+    bytec_0 // "counter"
+    app_global_get_ex
+    assert // check self.counter exists
+    intc_1 // 1
+    +
+    bytec_0 // "counter"
+    swap
+    app_global_put
+    // smart_contracts/global_storage/contract.py:22
+    // self.last_changed_by.value = Address(Txn.sender)
+    bytec_1 // "last_changed_by"
+    txn Sender
+    app_global_put
+    retsub
+
+
+// smart_contracts.global_storage.contract.Counter.decrement() -> void:
+decrement:
+    // smart_contracts/global_storage/contract.py:26
+    // if self.counter.value!=0:
+    intc_0 // 0
+    bytec_0 // "counter"
+    app_global_get_ex
+    assert // check self.counter exists
+    bz decrement_after_if_else@2
+    // smart_contracts/global_storage/contract.py:27
+    // self.counter.value -= UInt64(1)
+    intc_0 // 0
+    bytec_0 // "counter"
+    app_global_get_ex
+    assert // check self.counter exists
+    intc_1 // 1
+    -
+    bytec_0 // "counter"
+    swap
+    app_global_put
+    // smart_contracts/global_storage/contract.py:28
+    // self.last_changed_by.value = Address(Txn.sender)
+    bytec_1 // "last_changed_by"
+    txn Sender
+    app_global_put
+
+decrement_after_if_else@2:
+    retsub

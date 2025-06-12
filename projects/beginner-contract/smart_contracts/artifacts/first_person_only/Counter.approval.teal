@@ -1,0 +1,124 @@
+#pragma version 10
+#pragma typetrack false
+
+// smart_contracts.first_person_only.contract.Counter.__algopy_entrypoint_with_init() -> uint64:
+main:
+    intcblock 0 1
+    bytecblock "counter" 0x151f7c75
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/first_person_only/contract.py:7
+    // self.counter = GlobalState(UInt64(0))
+    bytec_0 // "counter"
+    intc_0 // 0
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/first_person_only/contract.py:5
+    // class Counter(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@7
+    pushbytess 0xfee2b0b8 0x6f8160f6 // method "call()string", method "reset()string"
+    txna ApplicationArgs 0
+    match main_call_route@5 main_reset_route@6
+
+main_after_if_else@9:
+    // smart_contracts/first_person_only/contract.py:5
+    // class Counter(ARC4Contract):
+    intc_0 // 0
+    return
+
+main_reset_route@6:
+    // smart_contracts/first_person_only/contract.py:13
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub reset
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_call_route@5:
+    // smart_contracts/first_person_only/contract.py:8
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub call
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_bare_routing@7:
+    // smart_contracts/first_person_only/contract.py:5
+    // class Counter(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@9
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_1 // 1
+    return
+
+
+// smart_contracts.first_person_only.contract.Counter.call() -> bytes:
+call:
+    // smart_contracts/first_person_only/contract.py:10
+    // assert self.counter.value ==0, "The method can only be called for once"
+    intc_0 // 0
+    bytec_0 // "counter"
+    app_global_get_ex
+    assert // check self.counter exists
+    !
+    assert // The method can only be called for once
+    // smart_contracts/first_person_only/contract.py:11
+    // self.counter.value = UInt64(1)
+    bytec_0 // "counter"
+    intc_1 // 1
+    app_global_put
+    // smart_contracts/first_person_only/contract.py:12
+    // return String("Method called succesfully!!")
+    pushbytes "Method called succesfully!!"
+    retsub
+
+
+// smart_contracts.first_person_only.contract.Counter.reset() -> bytes:
+reset:
+    // smart_contracts/first_person_only/contract.py:15
+    // assert Txn.sender == Global.creator_address, "Only the creator can call this method"
+    txn Sender
+    global CreatorAddress
+    ==
+    assert // Only the creator can call this method
+    // smart_contracts/first_person_only/contract.py:16
+    // self.counter.value = UInt64(0)
+    bytec_0 // "counter"
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/first_person_only/contract.py:17
+    // return String("Counter reset succesfully!!")
+    pushbytes "Counter reset succesfully!!"
+    retsub

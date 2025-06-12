@@ -1,0 +1,144 @@
+{
+    "name": "Counter",
+    "structs": {},
+    "methods": [
+        {
+            "name": "call",
+            "args": [],
+            "returns": {
+                "type": "string"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": false,
+            "events": [],
+            "recommendations": {}
+        },
+        {
+            "name": "reset",
+            "args": [],
+            "returns": {
+                "type": "string"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": false,
+            "events": [],
+            "recommendations": {}
+        }
+    ],
+    "arcs": [
+        22,
+        28
+    ],
+    "networks": {},
+    "state": {
+        "schema": {
+            "global": {
+                "ints": 1,
+                "bytes": 0
+            },
+            "local": {
+                "ints": 0,
+                "bytes": 0
+            }
+        },
+        "keys": {
+            "global": {
+                "counter": {
+                    "keyType": "AVMString",
+                    "valueType": "AVMUint64",
+                    "key": "Y291bnRlcg=="
+                }
+            },
+            "local": {},
+            "box": {}
+        },
+        "maps": {
+            "global": {},
+            "local": {},
+            "box": {}
+        }
+    },
+    "bareActions": {
+        "create": [
+            "NoOp"
+        ],
+        "call": []
+    },
+    "sourceInfo": {
+        "approval": {
+            "sourceInfo": [
+                {
+                    "pc": [
+                        59,
+                        83
+                    ],
+                    "errorMessage": "OnCompletion is not NoOp"
+                },
+                {
+                    "pc": [
+                        159
+                    ],
+                    "errorMessage": "Only the creator can call this method"
+                },
+                {
+                    "pc": [
+                        120
+                    ],
+                    "errorMessage": "The method can only be called for once"
+                },
+                {
+                    "pc": [
+                        112
+                    ],
+                    "errorMessage": "can only call when creating"
+                },
+                {
+                    "pc": [
+                        62,
+                        86
+                    ],
+                    "errorMessage": "can only call when not creating"
+                },
+                {
+                    "pc": [
+                        118
+                    ],
+                    "errorMessage": "check self.counter exists"
+                }
+            ],
+            "pcOffsetMethod": "none"
+        },
+        "clear": {
+            "sourceInfo": [],
+            "pcOffsetMethod": "none"
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBzbWFydF9jb250cmFjdHMuZmlyc3RfcGVyc29uX29ubHkuY29udHJhY3QuQ291bnRlci5fX2FsZ29weV9lbnRyeXBvaW50X3dpdGhfaW5pdCgpIC0+IHVpbnQ2NDoKbWFpbjoKICAgIGludGNibG9jayAwIDEKICAgIGJ5dGVjYmxvY2sgImNvdW50ZXIiIDB4MTUxZjdjNzUKICAgIHR4biBBcHBsaWNhdGlvbklECiAgICBibnogbWFpbl9hZnRlcl9pZl9lbHNlQDIKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9maXJzdF9wZXJzb25fb25seS9jb250cmFjdC5weTo3CiAgICAvLyBzZWxmLmNvdW50ZXIgPSBHbG9iYWxTdGF0ZShVSW50NjQoMCkpCiAgICBieXRlY18wIC8vICJjb3VudGVyIgogICAgaW50Y18wIC8vIDAKICAgIGFwcF9nbG9iYWxfcHV0CgptYWluX2FmdGVyX2lmX2Vsc2VAMjoKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9maXJzdF9wZXJzb25fb25seS9jb250cmFjdC5weTo1CiAgICAvLyBjbGFzcyBDb3VudGVyKEFSQzRDb250cmFjdCk6CiAgICB0eG4gTnVtQXBwQXJncwogICAgYnogbWFpbl9iYXJlX3JvdXRpbmdANwogICAgcHVzaGJ5dGVzcyAweGZlZTJiMGI4IDB4NmY4MTYwZjYgLy8gbWV0aG9kICJjYWxsKClzdHJpbmciLCBtZXRob2QgInJlc2V0KClzdHJpbmciCiAgICB0eG5hIEFwcGxpY2F0aW9uQXJncyAwCiAgICBtYXRjaCBtYWluX2NhbGxfcm91dGVANSBtYWluX3Jlc2V0X3JvdXRlQDYKCm1haW5fYWZ0ZXJfaWZfZWxzZUA5OgogICAgLy8gc21hcnRfY29udHJhY3RzL2ZpcnN0X3BlcnNvbl9vbmx5L2NvbnRyYWN0LnB5OjUKICAgIC8vIGNsYXNzIENvdW50ZXIoQVJDNENvbnRyYWN0KToKICAgIGludGNfMCAvLyAwCiAgICByZXR1cm4KCm1haW5fcmVzZXRfcm91dGVANjoKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9maXJzdF9wZXJzb25fb25seS9jb250cmFjdC5weToxMwogICAgLy8gQGFiaW1ldGhvZCgpCiAgICB0eG4gT25Db21wbGV0aW9uCiAgICAhCiAgICBhc3NlcnQgLy8gT25Db21wbGV0aW9uIGlzIG5vdCBOb09wCiAgICB0eG4gQXBwbGljYXRpb25JRAogICAgYXNzZXJ0IC8vIGNhbiBvbmx5IGNhbGwgd2hlbiBub3QgY3JlYXRpbmcKICAgIGNhbGxzdWIgcmVzZXQKICAgIGR1cAogICAgbGVuCiAgICBpdG9iCiAgICBleHRyYWN0IDYgMgogICAgc3dhcAogICAgY29uY2F0CiAgICBieXRlY18xIC8vIDB4MTUxZjdjNzUKICAgIHN3YXAKICAgIGNvbmNhdAogICAgbG9nCiAgICBpbnRjXzEgLy8gMQogICAgcmV0dXJuCgptYWluX2NhbGxfcm91dGVANToKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9maXJzdF9wZXJzb25fb25seS9jb250cmFjdC5weTo4CiAgICAvLyBAYWJpbWV0aG9kKCkKICAgIHR4biBPbkNvbXBsZXRpb24KICAgICEKICAgIGFzc2VydCAvLyBPbkNvbXBsZXRpb24gaXMgbm90IE5vT3AKICAgIHR4biBBcHBsaWNhdGlvbklECiAgICBhc3NlcnQgLy8gY2FuIG9ubHkgY2FsbCB3aGVuIG5vdCBjcmVhdGluZwogICAgY2FsbHN1YiBjYWxsCiAgICBkdXAKICAgIGxlbgogICAgaXRvYgogICAgZXh0cmFjdCA2IDIKICAgIHN3YXAKICAgIGNvbmNhdAogICAgYnl0ZWNfMSAvLyAweDE1MWY3Yzc1CiAgICBzd2FwCiAgICBjb25jYXQKICAgIGxvZwogICAgaW50Y18xIC8vIDEKICAgIHJldHVybgoKbWFpbl9iYXJlX3JvdXRpbmdANzoKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9maXJzdF9wZXJzb25fb25seS9jb250cmFjdC5weTo1CiAgICAvLyBjbGFzcyBDb3VudGVyKEFSQzRDb250cmFjdCk6CiAgICB0eG4gT25Db21wbGV0aW9uCiAgICBibnogbWFpbl9hZnRlcl9pZl9lbHNlQDkKICAgIHR4biBBcHBsaWNhdGlvbklECiAgICAhCiAgICBhc3NlcnQgLy8gY2FuIG9ubHkgY2FsbCB3aGVuIGNyZWF0aW5nCiAgICBpbnRjXzEgLy8gMQogICAgcmV0dXJuCgoKLy8gc21hcnRfY29udHJhY3RzLmZpcnN0X3BlcnNvbl9vbmx5LmNvbnRyYWN0LkNvdW50ZXIuY2FsbCgpIC0+IGJ5dGVzOgpjYWxsOgogICAgLy8gc21hcnRfY29udHJhY3RzL2ZpcnN0X3BlcnNvbl9vbmx5L2NvbnRyYWN0LnB5OjEwCiAgICAvLyBhc3NlcnQgc2VsZi5jb3VudGVyLnZhbHVlID09MCwgIlRoZSBtZXRob2QgY2FuIG9ubHkgYmUgY2FsbGVkIGZvciBvbmNlIgogICAgaW50Y18wIC8vIDAKICAgIGJ5dGVjXzAgLy8gImNvdW50ZXIiCiAgICBhcHBfZ2xvYmFsX2dldF9leAogICAgYXNzZXJ0IC8vIGNoZWNrIHNlbGYuY291bnRlciBleGlzdHMKICAgICEKICAgIGFzc2VydCAvLyBUaGUgbWV0aG9kIGNhbiBvbmx5IGJlIGNhbGxlZCBmb3Igb25jZQogICAgLy8gc21hcnRfY29udHJhY3RzL2ZpcnN0X3BlcnNvbl9vbmx5L2NvbnRyYWN0LnB5OjExCiAgICAvLyBzZWxmLmNvdW50ZXIudmFsdWUgPSBVSW50NjQoMSkKICAgIGJ5dGVjXzAgLy8gImNvdW50ZXIiCiAgICBpbnRjXzEgLy8gMQogICAgYXBwX2dsb2JhbF9wdXQKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9maXJzdF9wZXJzb25fb25seS9jb250cmFjdC5weToxMgogICAgLy8gcmV0dXJuIFN0cmluZygiTWV0aG9kIGNhbGxlZCBzdWNjZXNmdWxseSEhIikKICAgIHB1c2hieXRlcyAiTWV0aG9kIGNhbGxlZCBzdWNjZXNmdWxseSEhIgogICAgcmV0c3ViCgoKLy8gc21hcnRfY29udHJhY3RzLmZpcnN0X3BlcnNvbl9vbmx5LmNvbnRyYWN0LkNvdW50ZXIucmVzZXQoKSAtPiBieXRlczoKcmVzZXQ6CiAgICAvLyBzbWFydF9jb250cmFjdHMvZmlyc3RfcGVyc29uX29ubHkvY29udHJhY3QucHk6MTUKICAgIC8vIGFzc2VydCBUeG4uc2VuZGVyID09IEdsb2JhbC5jcmVhdG9yX2FkZHJlc3MsICJPbmx5IHRoZSBjcmVhdG9yIGNhbiBjYWxsIHRoaXMgbWV0aG9kIgogICAgdHhuIFNlbmRlcgogICAgZ2xvYmFsIENyZWF0b3JBZGRyZXNzCiAgICA9PQogICAgYXNzZXJ0IC8vIE9ubHkgdGhlIGNyZWF0b3IgY2FuIGNhbGwgdGhpcyBtZXRob2QKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9maXJzdF9wZXJzb25fb25seS9jb250cmFjdC5weToxNgogICAgLy8gc2VsZi5jb3VudGVyLnZhbHVlID0gVUludDY0KDApCiAgICBieXRlY18wIC8vICJjb3VudGVyIgogICAgaW50Y18wIC8vIDAKICAgIGFwcF9nbG9iYWxfcHV0CiAgICAvLyBzbWFydF9jb250cmFjdHMvZmlyc3RfcGVyc29uX29ubHkvY29udHJhY3QucHk6MTcKICAgIC8vIHJldHVybiBTdHJpbmcoIkNvdW50ZXIgcmVzZXQgc3VjY2VzZnVsbHkhISIpCiAgICBwdXNoYnl0ZXMgIkNvdW50ZXIgcmVzZXQgc3VjY2VzZnVsbHkhISIKICAgIHJldHN1Ygo=",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDEwCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBhbGdvcHkuYXJjNC5BUkM0Q29udHJhY3QuY2xlYXJfc3RhdGVfcHJvZ3JhbSgpIC0+IHVpbnQ2NDoKbWFpbjoKICAgIHB1c2hpbnQgMSAvLyAxCiAgICByZXR1cm4K"
+    },
+    "byteCode": {
+        "approval": "CiACAAEmAgdjb3VudGVyBBUffHUxGEAAAygiZzEbQQBHggIE/uKwuARvgWD2NhoAjgIAGgACIkMxGRREMRhEiABYSRUWVwYCTFApTFCwI0MxGRREMRhEiAAZSRUWVwYCTFApTFCwI0MxGUD/yTEYFEQjQyIoZUQURCgjZ4AbTWV0aG9kIGNhbGxlZCBzdWNjZXNmdWxseSEhiTEAMgkSRCgiZ4AbQ291bnRlciByZXNldCBzdWNjZXNmdWxseSEhiQ==",
+        "clear": "CoEBQw=="
+    },
+    "compilerInfo": {
+        "compiler": "puya",
+        "compilerVersion": {
+            "major": 4,
+            "minor": 9,
+            "patch": 0
+        }
+    },
+    "events": [],
+    "templateVariables": {}
+}

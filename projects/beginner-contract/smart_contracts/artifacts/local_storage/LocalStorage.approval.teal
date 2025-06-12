@@ -1,0 +1,140 @@
+#pragma version 10
+#pragma typetrack false
+
+// smart_contracts.local_storage.contract.LocalStorage.__algopy_entrypoint_with_init() -> uint64:
+main:
+    intcblock 1 0
+    bytecblock "number"
+    // smart_contracts/local_storage/contract.py:4
+    // class LocalStorage(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@8
+    pushbytess 0x77a34454 0x1c28927e 0x27ba9441 // method "set_value(account,uint64)void", method "get_value(account)uint64", method "clear_value(account)void"
+    txna ApplicationArgs 0
+    match main_set_value_route@5 main_get_value_route@6 main_clear_value_route@7
+
+main_after_if_else@10:
+    // smart_contracts/local_storage/contract.py:4
+    // class LocalStorage(ARC4Contract):
+    intc_1 // 0
+    return
+
+main_clear_value_route@7:
+    // smart_contracts/local_storage/contract.py:22
+    // @arc4.abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/local_storage/contract.py:4
+    // class LocalStorage(ARC4Contract):
+    txna ApplicationArgs 1
+    btoi
+    txnas Accounts
+    // smart_contracts/local_storage/contract.py:22
+    // @arc4.abimethod()
+    callsub clear_value
+    intc_0 // 1
+    return
+
+main_get_value_route@6:
+    // smart_contracts/local_storage/contract.py:16
+    // @arc4.abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/local_storage/contract.py:4
+    // class LocalStorage(ARC4Contract):
+    txna ApplicationArgs 1
+    btoi
+    txnas Accounts
+    // smart_contracts/local_storage/contract.py:16
+    // @arc4.abimethod()
+    callsub get_value
+    itob
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_set_value_route@5:
+    // smart_contracts/local_storage/contract.py:10
+    // @arc4.abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/local_storage/contract.py:4
+    // class LocalStorage(ARC4Contract):
+    txna ApplicationArgs 1
+    btoi
+    txnas Accounts
+    txna ApplicationArgs 2
+    btoi
+    // smart_contracts/local_storage/contract.py:10
+    // @arc4.abimethod()
+    callsub set_value
+    intc_0 // 1
+    return
+
+main_bare_routing@8:
+    // smart_contracts/local_storage/contract.py:4
+    // class LocalStorage(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@10
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_0 // 1
+    return
+
+
+// smart_contracts.local_storage.contract.LocalStorage.set_value(account: bytes, value: uint64) -> void:
+set_value:
+    // smart_contracts/local_storage/contract.py:10-11
+    // @arc4.abimethod()
+    // def set_value(self, account: Account, value: UInt64) -> None:
+    proto 2 0
+    // smart_contracts/local_storage/contract.py:15
+    // self.number[account] = value
+    frame_dig -2
+    bytec_0 // "number"
+    frame_dig -1
+    app_local_put
+    retsub
+
+
+// smart_contracts.local_storage.contract.LocalStorage.get_value(account: bytes) -> uint64:
+get_value:
+    // smart_contracts/local_storage/contract.py:16-17
+    // @arc4.abimethod()
+    // def get_value(self, account: Account) -> UInt64:
+    proto 1 1
+    // smart_contracts/local_storage/contract.py:21
+    // return self.number[account]
+    frame_dig -1
+    intc_1 // 0
+    bytec_0 // "number"
+    app_local_get_ex
+    assert // check self.number exists for account
+    retsub
+
+
+// smart_contracts.local_storage.contract.LocalStorage.clear_value(account: bytes) -> void:
+clear_value:
+    // smart_contracts/local_storage/contract.py:22-23
+    // @arc4.abimethod()
+    // def clear_value(self, account: Account) -> None:
+    proto 1 0
+    // smart_contracts/local_storage/contract.py:27
+    // del self.number[account]
+    frame_dig -1
+    bytec_0 // "number"
+    app_local_del
+    retsub

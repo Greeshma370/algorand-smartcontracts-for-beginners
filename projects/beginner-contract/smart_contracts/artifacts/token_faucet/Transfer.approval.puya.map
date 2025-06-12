@@ -1,0 +1,374 @@
+{
+  "version": 3,
+  "sources": [
+    "../../token_faucet/contract.py"
+  ],
+  "mappings": ";;;;;;;;AAIA;;AAAA;;;AAAA;;;;;;AAAA;;;AAAA;;;;AAAA;;AACK;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;AADL;;AAAA;;;;;;;;;AAGgB;;AAAA;;AAAA;AAA6C;;AAAA;;AAAA;AAA7C;AAA+F;AAA/F;AAAR;AACA;AACa;;AACD;;AAEH;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AADE;;;;;;;AAHX;;;AAAA;;;AAAA;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "algopy.arc4.ARC4Contract.approval_program",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 0 1000000"
+    },
+    "8": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "10": {
+      "op": "bz main_bare_routing@6",
+      "stack_out": []
+    },
+    "13": {
+      "op": "pushbytes 0xe9892bef // method \"fund()void\"",
+      "defined_out": [
+        "Method(fund()void)"
+      ],
+      "stack_out": [
+        "Method(fund()void)"
+      ]
+    },
+    "19": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(fund()void)",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "Method(fund()void)",
+        "tmp%2#0"
+      ]
+    },
+    "22": {
+      "op": "match main_fund_route@3",
+      "stack_out": []
+    },
+    "26": {
+      "block": "main_after_if_else@10",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "27": {
+      "op": "return",
+      "stack_out": []
+    },
+    "28": {
+      "block": "main_fund_route@3",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "30": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "31": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "32": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%5#0"
+      ]
+    },
+    "34": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "35": {
+      "callsub": "smart_contracts.token_faucet.contract.Transfer.fund",
+      "op": "callsub fund"
+    },
+    "38": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "39": {
+      "op": "return",
+      "stack_out": []
+    },
+    "40": {
+      "block": "main_bare_routing@6",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "42": {
+      "op": "bnz main_after_if_else@10",
+      "stack_out": []
+    },
+    "45": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "47": {
+      "op": "!",
+      "defined_out": [
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%9#0"
+      ]
+    },
+    "48": {
+      "error": "can only call when creating",
+      "op": "assert // can only call when creating",
+      "stack_out": []
+    },
+    "49": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "50": {
+      "op": "return",
+      "stack_out": []
+    },
+    "51": {
+      "subroutine": "smart_contracts.token_faucet.contract.Transfer.fund",
+      "params": {},
+      "block": "fund",
+      "stack_in": [],
+      "op": "global CurrentApplicationAddress",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "53": {
+      "op": "acct_params_get AcctBalance",
+      "defined_out": [
+        "check%0#0",
+        "value%0#0"
+      ],
+      "stack_out": [
+        "value%0#0",
+        "check%0#0"
+      ]
+    },
+    "55": {
+      "error": "account funded",
+      "op": "assert // account funded",
+      "stack_out": [
+        "value%0#0"
+      ]
+    },
+    "56": {
+      "op": "global CurrentApplicationAddress",
+      "defined_out": [
+        "tmp%1#0",
+        "value%0#0"
+      ],
+      "stack_out": [
+        "value%0#0",
+        "tmp%1#0"
+      ]
+    },
+    "58": {
+      "op": "acct_params_get AcctMinBalance",
+      "defined_out": [
+        "check%1#0",
+        "value%0#0",
+        "value%1#0"
+      ],
+      "stack_out": [
+        "value%0#0",
+        "value%1#0",
+        "check%1#0"
+      ]
+    },
+    "60": {
+      "error": "account funded",
+      "op": "assert // account funded",
+      "stack_out": [
+        "value%0#0",
+        "value%1#0"
+      ]
+    },
+    "61": {
+      "op": "-",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "62": {
+      "op": "intc_2 // 1000000",
+      "defined_out": [
+        "1000000",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0",
+        "1000000"
+      ]
+    },
+    "63": {
+      "op": ">",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "64": {
+      "error": "No money",
+      "op": "assert // No money",
+      "stack_out": []
+    },
+    "65": {
+      "op": "itxn_begin"
+    },
+    "66": {
+      "op": "txn Sender",
+      "defined_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0"
+      ],
+      "stack_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0"
+      ]
+    },
+    "68": {
+      "op": "global CurrentApplicationAddress",
+      "defined_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0",
+        "inner_txn_params%0%%param_Sender_idx_0#0"
+      ],
+      "stack_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0",
+        "inner_txn_params%0%%param_Sender_idx_0#0"
+      ]
+    },
+    "70": {
+      "op": "pushbytes \"Funding the receiver account\"",
+      "defined_out": [
+        "\"Funding the receiver account\"",
+        "inner_txn_params%0%%param_Receiver_idx_0#0",
+        "inner_txn_params%0%%param_Sender_idx_0#0"
+      ],
+      "stack_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0",
+        "inner_txn_params%0%%param_Sender_idx_0#0",
+        "\"Funding the receiver account\""
+      ]
+    },
+    "100": {
+      "op": "itxn_field Note",
+      "stack_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0",
+        "inner_txn_params%0%%param_Sender_idx_0#0"
+      ]
+    },
+    "102": {
+      "op": "intc_2 // 1000000",
+      "stack_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0",
+        "inner_txn_params%0%%param_Sender_idx_0#0",
+        "1000000"
+      ]
+    },
+    "103": {
+      "op": "itxn_field Amount",
+      "stack_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0",
+        "inner_txn_params%0%%param_Sender_idx_0#0"
+      ]
+    },
+    "105": {
+      "op": "itxn_field Sender",
+      "stack_out": [
+        "inner_txn_params%0%%param_Receiver_idx_0#0"
+      ]
+    },
+    "107": {
+      "op": "itxn_field Receiver",
+      "stack_out": []
+    },
+    "109": {
+      "op": "intc_0 // pay",
+      "defined_out": [
+        "pay"
+      ],
+      "stack_out": [
+        "pay"
+      ]
+    },
+    "110": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": []
+    },
+    "112": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "113": {
+      "op": "itxn_field Fee",
+      "stack_out": []
+    },
+    "115": {
+      "op": "itxn_submit"
+    },
+    "116": {
+      "retsub": true,
+      "op": "retsub"
+    }
+  }
+}

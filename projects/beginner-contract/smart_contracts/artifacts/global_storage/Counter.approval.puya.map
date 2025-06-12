@@ -1,0 +1,850 @@
+{
+  "version": 3,
+  "sources": [
+    "../../global_storage/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAOQ;AAA2B;AAA3B;AACA;AAAmC;;AAAnC;AAHR;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;AAAA;;AAkBK;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;AALA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;AAJA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAJA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;;AALL;;AAAA;;;;;;;;;AAOe;AAAA;AAAA;AAAA;AAAP;AAIO;AAAA;AAAA;AAAA;AAAP;AAIA;AAAA;AAAA;AAAA;AAAsB;AAAtB;AAAA;AAAA;AAAA;AACA;AAAqC;;AAArC;;AAIG;AAAA;AAAA;AAAA;AAAX;;;AACY;AAAA;AAAA;AAAA;AAAsB;AAAtB;AAAA;AAAA;AAAA;AACA;AAAqC;;AAArC;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "smart_contracts.global_storage.contract.Counter.__algopy_entrypoint_with_init",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 0 1"
+    },
+    "5": {
+      "op": "bytecblock \"counter\" \"last_changed_by\" 0x151f7c75"
+    },
+    "36": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "38": {
+      "op": "bnz main_after_if_else@2",
+      "stack_out": []
+    },
+    "41": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\""
+      ],
+      "stack_out": [
+        "\"counter\""
+      ]
+    },
+    "42": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "\"counter\"",
+        "0"
+      ]
+    },
+    "43": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "44": {
+      "op": "bytec_1 // \"last_changed_by\"",
+      "defined_out": [
+        "\"last_changed_by\""
+      ],
+      "stack_out": [
+        "\"last_changed_by\""
+      ]
+    },
+    "45": {
+      "op": "global ZeroAddress",
+      "defined_out": [
+        "\"last_changed_by\"",
+        "materialized_values%0#0"
+      ],
+      "stack_out": [
+        "\"last_changed_by\"",
+        "materialized_values%0#0"
+      ]
+    },
+    "47": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "48": {
+      "block": "main_after_if_else@2",
+      "stack_in": [],
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#2"
+      ],
+      "stack_out": [
+        "tmp%0#2"
+      ]
+    },
+    "50": {
+      "op": "bz main_bare_routing@9",
+      "stack_out": []
+    },
+    "53": {
+      "op": "pushbytess 0x7fad9780 0x50ea81cb 0x2fa47328 0x4b5bddfd // method \"get_address()address\", method \"get()uint64\", method \"increment()void\", method \"decrement()void\"",
+      "defined_out": [
+        "Method(decrement()void)",
+        "Method(get()uint64)",
+        "Method(get_address()address)",
+        "Method(increment()void)"
+      ],
+      "stack_out": [
+        "Method(get_address()address)",
+        "Method(get()uint64)",
+        "Method(increment()void)",
+        "Method(decrement()void)"
+      ]
+    },
+    "75": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(decrement()void)",
+        "Method(get()uint64)",
+        "Method(get_address()address)",
+        "Method(increment()void)",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "Method(get_address()address)",
+        "Method(get()uint64)",
+        "Method(increment()void)",
+        "Method(decrement()void)",
+        "tmp%2#0"
+      ]
+    },
+    "78": {
+      "op": "match main_get_address_route@5 main_get_route@6 main_increment_route@7 main_decrement_route@8",
+      "stack_out": []
+    },
+    "88": {
+      "block": "main_after_if_else@11",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "89": {
+      "op": "return",
+      "stack_out": []
+    },
+    "90": {
+      "block": "main_decrement_route@8",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%18#0"
+      ],
+      "stack_out": [
+        "tmp%18#0"
+      ]
+    },
+    "92": {
+      "op": "!",
+      "defined_out": [
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "tmp%19#0"
+      ]
+    },
+    "93": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "94": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%20#0"
+      ],
+      "stack_out": [
+        "tmp%20#0"
+      ]
+    },
+    "96": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "97": {
+      "callsub": "smart_contracts.global_storage.contract.Counter.decrement",
+      "op": "callsub decrement"
+    },
+    "100": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "101": {
+      "op": "return",
+      "stack_out": []
+    },
+    "102": {
+      "block": "main_increment_route@7",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%14#0"
+      ],
+      "stack_out": [
+        "tmp%14#0"
+      ]
+    },
+    "104": {
+      "op": "!",
+      "defined_out": [
+        "tmp%15#0"
+      ],
+      "stack_out": [
+        "tmp%15#0"
+      ]
+    },
+    "105": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "106": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "tmp%16#0"
+      ]
+    },
+    "108": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "109": {
+      "callsub": "smart_contracts.global_storage.contract.Counter.increment",
+      "op": "callsub increment"
+    },
+    "112": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "113": {
+      "op": "return",
+      "stack_out": []
+    },
+    "114": {
+      "block": "main_get_route@6",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%9#0"
+      ]
+    },
+    "116": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "tmp%10#0"
+      ]
+    },
+    "117": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "118": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "120": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "121": {
+      "callsub": "smart_contracts.global_storage.contract.Counter.get",
+      "op": "callsub get",
+      "defined_out": [
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0"
+      ]
+    },
+    "124": {
+      "op": "itob",
+      "defined_out": [
+        "val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "val_as_bytes%0#0"
+      ]
+    },
+    "125": {
+      "op": "bytec_2 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "126": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "val_as_bytes%0#0"
+      ]
+    },
+    "127": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "tmp%13#0"
+      ]
+    },
+    "128": {
+      "op": "log",
+      "stack_out": []
+    },
+    "129": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "130": {
+      "op": "return",
+      "stack_out": []
+    },
+    "131": {
+      "block": "main_get_address_route@5",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "133": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "134": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "135": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%5#0"
+      ]
+    },
+    "137": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "138": {
+      "callsub": "smart_contracts.global_storage.contract.Counter.get_address",
+      "op": "callsub get_address",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "141": {
+      "op": "bytec_2 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0",
+        "0x151f7c75"
+      ]
+    },
+    "142": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "tmp%7#0"
+      ]
+    },
+    "143": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "144": {
+      "op": "log",
+      "stack_out": []
+    },
+    "145": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "146": {
+      "op": "return",
+      "stack_out": []
+    },
+    "147": {
+      "block": "main_bare_routing@9",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%22#0"
+      ],
+      "stack_out": [
+        "tmp%22#0"
+      ]
+    },
+    "149": {
+      "op": "bnz main_after_if_else@11",
+      "stack_out": []
+    },
+    "152": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%23#0"
+      ],
+      "stack_out": [
+        "tmp%23#0"
+      ]
+    },
+    "154": {
+      "op": "!",
+      "defined_out": [
+        "tmp%24#0"
+      ],
+      "stack_out": [
+        "tmp%24#0"
+      ]
+    },
+    "155": {
+      "error": "can only call when creating",
+      "op": "assert // can only call when creating",
+      "stack_out": []
+    },
+    "156": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "157": {
+      "op": "return",
+      "stack_out": []
+    },
+    "158": {
+      "subroutine": "smart_contracts.global_storage.contract.Counter.get_address",
+      "params": {},
+      "block": "get_address",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "159": {
+      "op": "bytec_1 // \"last_changed_by\"",
+      "defined_out": [
+        "\"last_changed_by\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"last_changed_by\""
+      ]
+    },
+    "160": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "161": {
+      "error": "check self.last_changed_by exists",
+      "op": "assert // check self.last_changed_by exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "162": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "163": {
+      "subroutine": "smart_contracts.global_storage.contract.Counter.get",
+      "params": {},
+      "block": "get",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "164": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"counter\""
+      ]
+    },
+    "165": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "166": {
+      "error": "check self.counter exists",
+      "op": "assert // check self.counter exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "167": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "168": {
+      "subroutine": "smart_contracts.global_storage.contract.Counter.increment",
+      "params": {},
+      "block": "increment",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "169": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"counter\""
+      ]
+    },
+    "170": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "171": {
+      "error": "check self.counter exists",
+      "op": "assert // check self.counter exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "172": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "1"
+      ]
+    },
+    "173": {
+      "op": "+",
+      "defined_out": [
+        "materialized_values%0#0"
+      ],
+      "stack_out": [
+        "materialized_values%0#0"
+      ]
+    },
+    "174": {
+      "op": "bytec_0 // \"counter\"",
+      "stack_out": [
+        "materialized_values%0#0",
+        "\"counter\""
+      ]
+    },
+    "175": {
+      "op": "swap",
+      "stack_out": [
+        "\"counter\"",
+        "materialized_values%0#0"
+      ]
+    },
+    "176": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "177": {
+      "op": "bytec_1 // \"last_changed_by\"",
+      "defined_out": [
+        "\"last_changed_by\""
+      ],
+      "stack_out": [
+        "\"last_changed_by\""
+      ]
+    },
+    "178": {
+      "op": "txn Sender",
+      "defined_out": [
+        "\"last_changed_by\"",
+        "materialized_values%1#0"
+      ],
+      "stack_out": [
+        "\"last_changed_by\"",
+        "materialized_values%1#0"
+      ]
+    },
+    "180": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "181": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "182": {
+      "subroutine": "smart_contracts.global_storage.contract.Counter.decrement",
+      "params": {},
+      "block": "decrement",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "183": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"counter\""
+      ]
+    },
+    "184": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "185": {
+      "error": "check self.counter exists",
+      "op": "assert // check self.counter exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "186": {
+      "op": "bz decrement_after_if_else@2",
+      "stack_out": []
+    },
+    "189": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "190": {
+      "op": "bytec_0 // \"counter\"",
+      "stack_out": [
+        "0",
+        "\"counter\""
+      ]
+    },
+    "191": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "192": {
+      "error": "check self.counter exists",
+      "op": "assert // check self.counter exists",
+      "stack_out": [
+        "maybe_value%1#0"
+      ]
+    },
+    "193": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%1#0",
+        "1"
+      ]
+    },
+    "194": {
+      "op": "-",
+      "defined_out": [
+        "materialized_values%0#0"
+      ],
+      "stack_out": [
+        "materialized_values%0#0"
+      ]
+    },
+    "195": {
+      "op": "bytec_0 // \"counter\"",
+      "stack_out": [
+        "materialized_values%0#0",
+        "\"counter\""
+      ]
+    },
+    "196": {
+      "op": "swap",
+      "stack_out": [
+        "\"counter\"",
+        "materialized_values%0#0"
+      ]
+    },
+    "197": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "198": {
+      "op": "bytec_1 // \"last_changed_by\"",
+      "defined_out": [
+        "\"last_changed_by\""
+      ],
+      "stack_out": [
+        "\"last_changed_by\""
+      ]
+    },
+    "199": {
+      "op": "txn Sender",
+      "defined_out": [
+        "\"last_changed_by\"",
+        "materialized_values%1#0"
+      ],
+      "stack_out": [
+        "\"last_changed_by\"",
+        "materialized_values%1#0"
+      ]
+    },
+    "201": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "202": {
+      "block": "decrement_after_if_else@2",
+      "stack_in": [],
+      "retsub": true,
+      "op": "retsub"
+    }
+  }
+}

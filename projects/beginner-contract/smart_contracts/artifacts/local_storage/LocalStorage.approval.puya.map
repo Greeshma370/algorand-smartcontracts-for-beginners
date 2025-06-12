@@ -1,0 +1,602 @@
+{
+  "version": 3,
+  "sources": [
+    "../../local_storage/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;AAGA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;AAAA;;AAkBK;;AAAA;AAAA;AAAA;;AAAA;AAlBL;;;AAAA;AAAA;;AAkBK;;;AAAA;;AANA;;AAAA;AAAA;AAAA;;AAAA;AAZL;;;AAAA;AAAA;;AAYK;;;AAAA;AAAA;;;;;;AAAA;AAAA;AAAA;AAAA;;AANA;;AAAA;AAAA;AAAA;;AAAA;AANL;;;AAAA;AAAA;;AAAA;;;AAAA;AAMK;;;AAAA;;AANL;;AAAA;;;;;;;;;AAMA;;;AAKQ;;AAAA;AAAA;;AAAA;;AACR;;;AAKe;;AAAA;AAAA;AAAA;AAAA;AAAP;AACR;;;AAKQ;;AAAI;AAAJ;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "smart_contracts.local_storage.contract.LocalStorage.__algopy_entrypoint_with_init",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 0"
+    },
+    "5": {
+      "op": "bytecblock \"number\""
+    },
+    "14": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#2"
+      ],
+      "stack_out": [
+        "tmp%0#2"
+      ]
+    },
+    "16": {
+      "op": "bz main_bare_routing@8",
+      "stack_out": []
+    },
+    "19": {
+      "op": "pushbytess 0x77a34454 0x1c28927e 0x27ba9441 // method \"set_value(account,uint64)void\", method \"get_value(account)uint64\", method \"clear_value(account)void\"",
+      "defined_out": [
+        "Method(clear_value(account)void)",
+        "Method(get_value(account)uint64)",
+        "Method(set_value(account,uint64)void)"
+      ],
+      "stack_out": [
+        "Method(set_value(account,uint64)void)",
+        "Method(get_value(account)uint64)",
+        "Method(clear_value(account)void)"
+      ]
+    },
+    "36": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(clear_value(account)void)",
+        "Method(get_value(account)uint64)",
+        "Method(set_value(account,uint64)void)",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "Method(set_value(account,uint64)void)",
+        "Method(get_value(account)uint64)",
+        "Method(clear_value(account)void)",
+        "tmp%2#0"
+      ]
+    },
+    "39": {
+      "op": "match main_set_value_route@5 main_get_value_route@6 main_clear_value_route@7",
+      "stack_out": []
+    },
+    "47": {
+      "block": "main_after_if_else@10",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "48": {
+      "op": "return",
+      "stack_out": []
+    },
+    "49": {
+      "block": "main_clear_value_route@7",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%17#0"
+      ],
+      "stack_out": [
+        "tmp%17#0"
+      ]
+    },
+    "51": {
+      "op": "!",
+      "defined_out": [
+        "tmp%18#0"
+      ],
+      "stack_out": [
+        "tmp%18#0"
+      ]
+    },
+    "52": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "53": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "tmp%19#0"
+      ]
+    },
+    "55": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "56": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[1]%2#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[1]%2#0"
+      ]
+    },
+    "59": {
+      "op": "btoi",
+      "defined_out": [
+        "tmp%21#0"
+      ],
+      "stack_out": [
+        "tmp%21#0"
+      ]
+    },
+    "60": {
+      "op": "txnas Accounts",
+      "defined_out": [
+        "tmp%22#0"
+      ],
+      "stack_out": [
+        "tmp%22#0"
+      ]
+    },
+    "62": {
+      "callsub": "smart_contracts.local_storage.contract.LocalStorage.clear_value",
+      "op": "callsub clear_value",
+      "stack_out": []
+    },
+    "65": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "66": {
+      "op": "return",
+      "stack_out": []
+    },
+    "67": {
+      "block": "main_get_value_route@6",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "tmp%10#0"
+      ]
+    },
+    "69": {
+      "op": "!",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "70": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "71": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%12#0"
+      ],
+      "stack_out": [
+        "tmp%12#0"
+      ]
+    },
+    "73": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "74": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[1]%1#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[1]%1#0"
+      ]
+    },
+    "77": {
+      "op": "btoi",
+      "defined_out": [
+        "tmp%14#0"
+      ],
+      "stack_out": [
+        "tmp%14#0"
+      ]
+    },
+    "78": {
+      "op": "txnas Accounts",
+      "defined_out": [
+        "tmp%15#0"
+      ],
+      "stack_out": [
+        "tmp%15#0"
+      ]
+    },
+    "80": {
+      "callsub": "smart_contracts.local_storage.contract.LocalStorage.get_value",
+      "op": "callsub get_value",
+      "defined_out": [
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0"
+      ]
+    },
+    "83": {
+      "op": "itob",
+      "defined_out": [
+        "val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "val_as_bytes%0#0"
+      ]
+    },
+    "84": {
+      "op": "pushbytes 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "90": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "val_as_bytes%0#0"
+      ]
+    },
+    "91": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "tmp%16#0"
+      ]
+    },
+    "92": {
+      "op": "log",
+      "stack_out": []
+    },
+    "93": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "94": {
+      "op": "return",
+      "stack_out": []
+    },
+    "95": {
+      "block": "main_set_value_route@5",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "97": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "98": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "99": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%5#0"
+      ]
+    },
+    "101": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "102": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[1]%0#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[1]%0#0"
+      ]
+    },
+    "105": {
+      "op": "btoi",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "106": {
+      "op": "txnas Accounts",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "108": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "reinterpret_bytes[8]%0#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "reinterpret_bytes[8]%0#0"
+      ]
+    },
+    "111": {
+      "op": "btoi",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "112": {
+      "callsub": "smart_contracts.local_storage.contract.LocalStorage.set_value",
+      "op": "callsub set_value",
+      "stack_out": []
+    },
+    "115": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "116": {
+      "op": "return",
+      "stack_out": []
+    },
+    "117": {
+      "block": "main_bare_routing@8",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%23#0"
+      ],
+      "stack_out": [
+        "tmp%23#0"
+      ]
+    },
+    "119": {
+      "op": "bnz main_after_if_else@10",
+      "stack_out": []
+    },
+    "122": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%24#0"
+      ],
+      "stack_out": [
+        "tmp%24#0"
+      ]
+    },
+    "124": {
+      "op": "!",
+      "defined_out": [
+        "tmp%25#0"
+      ],
+      "stack_out": [
+        "tmp%25#0"
+      ]
+    },
+    "125": {
+      "error": "can only call when creating",
+      "op": "assert // can only call when creating",
+      "stack_out": []
+    },
+    "126": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "127": {
+      "op": "return",
+      "stack_out": []
+    },
+    "128": {
+      "subroutine": "smart_contracts.local_storage.contract.LocalStorage.set_value",
+      "params": {
+        "account#0": "bytes",
+        "value#0": "uint64"
+      },
+      "block": "set_value",
+      "stack_in": [],
+      "op": "proto 2 0"
+    },
+    "131": {
+      "op": "frame_dig -2",
+      "defined_out": [
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)"
+      ]
+    },
+    "133": {
+      "op": "bytec_0 // \"number\"",
+      "defined_out": [
+        "\"number\"",
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)",
+        "\"number\""
+      ]
+    },
+    "134": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "\"number\"",
+        "account#0 (copy)",
+        "value#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)",
+        "\"number\"",
+        "value#0 (copy)"
+      ]
+    },
+    "136": {
+      "op": "app_local_put",
+      "stack_out": []
+    },
+    "137": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "138": {
+      "subroutine": "smart_contracts.local_storage.contract.LocalStorage.get_value",
+      "params": {
+        "account#0": "bytes"
+      },
+      "block": "get_value",
+      "stack_in": [],
+      "op": "proto 1 1"
+    },
+    "141": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)"
+      ]
+    },
+    "143": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0",
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)",
+        "0"
+      ]
+    },
+    "144": {
+      "op": "bytec_0 // \"number\"",
+      "defined_out": [
+        "\"number\"",
+        "0",
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)",
+        "0",
+        "\"number\""
+      ]
+    },
+    "145": {
+      "op": "app_local_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "146": {
+      "error": "check self.number exists for account",
+      "op": "assert // check self.number exists for account",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "147": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "148": {
+      "subroutine": "smart_contracts.local_storage.contract.LocalStorage.clear_value",
+      "params": {
+        "account#0": "bytes"
+      },
+      "block": "clear_value",
+      "stack_in": [],
+      "op": "proto 1 0"
+    },
+    "151": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)"
+      ]
+    },
+    "153": {
+      "op": "bytec_0 // \"number\"",
+      "defined_out": [
+        "\"number\"",
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0 (copy)",
+        "\"number\""
+      ]
+    },
+    "154": {
+      "op": "app_local_del",
+      "stack_out": []
+    },
+    "155": {
+      "retsub": true,
+      "op": "retsub"
+    }
+  }
+}
