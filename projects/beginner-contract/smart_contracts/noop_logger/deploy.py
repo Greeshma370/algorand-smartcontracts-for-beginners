@@ -6,7 +6,7 @@ algodClient = algosdk.v2client.algod.AlgodClient(
     algod_address="http://localhost:4001",
 )
 
-creator_private_key = algosdk.mnemonic.to_private_key("hope oblige salmon police cool useless under draw soda umbrella charge duty thought evoke spatial spend paddle squirrel roof dumb bridge assist lobster absorb kingdom")
+creator_private_key = algosdk.mnemonic.to_private_key("your mnemonic here")  # replace with your mnemonic
 creator_address = algosdk.account.address_from_private_key(creator_private_key)
 
 local_schema = algosdk.transaction.StateSchema(num_uints=1, num_byte_slices=1)
