@@ -77,7 +77,7 @@ assert Txn.sender == Global.creator_address
 ---
 
 
-## 6. 'Whitelist Access' – Dynamic Array with BoxMap
+## 6. `Whitelist Access` – Dynamic Array with BoxMap
 **Purpose**: Manages a dynamic list of addresses associated with a string key using Algorand Boxes.
 
 **Methods**:
@@ -90,7 +90,7 @@ check(name, account) → Returns True if the account exists under the name.
 
 ---
 
-## 7. 'BoxMap UserStruct' – Struct Storage in Boxes
+## 7. `BoxMap UserStruct` – Struct Storage in Boxes
 **Purpose**: Demonstrates how to store and manage structured user data in on-chain boxes using BoxMap.
 
 Methods:
@@ -107,7 +107,7 @@ box_map_delete(key) → Deletes the box for the specified key.
 
 ---
 
-## 8. 'NoopLogger' – Log a Message on Execution
+## 8. `NoopLogger` – Log a Message on Execution
 **Purpose**: A basic example to demonstrate log() functionality on contract approval.
 
 **Methods**:
