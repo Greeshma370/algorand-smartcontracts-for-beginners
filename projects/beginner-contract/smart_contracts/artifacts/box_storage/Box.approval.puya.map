@@ -1,0 +1,941 @@
+{
+  "version": 3,
+  "sources": [
+    "../../box_storage/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAUA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;AAAA;;AAwBK;;AAAA;AAAA;AAAA;;AAAA;AAxBL;;;AAwBK;;;AAAA;;AALA;;AAAA;AAAA;AAAA;;AAAA;AAnBL;;;AAmBK;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AANA;;AAAA;AAAA;AAAA;;AAAA;AAbL;;;AAaK;;;AAAA;AAAA;AAAA;AAAA;AAAA;;AARA;;AAAA;AAAA;AAAA;;AAAA;AALL;;;AAAA;;;AAKK;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AALL;;AAAA;;;;;;;;;AAKA;;;AAGsB;AAAP;;AAAA;AAAA;AAAA;AAAA;;AAAP;AACA;AAAA;;AAAA;;AAAA;AAEO;AAAP;AAER;;;AAGsB;AAAP;;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAAP;AAER;;;AAGsB;AAAP;;AAAA;AAAA;AAAA;;AAAP;AAER;;;AAGY;AAAA;;AAAA;AAAJ;;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "smart_contracts.box_storage.contract.Box.__algopy_entrypoint_with_init",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 0"
+    },
+    "5": {
+      "op": "bytecblock \"users\" 0x151f7c75 0x00"
+    },
+    "20": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#2"
+      ],
+      "stack_out": [
+        "tmp%0#2"
+      ]
+    },
+    "22": {
+      "op": "bz main_bare_routing@9",
+      "stack_out": []
+    },
+    "25": {
+      "op": "pushbytess 0x079c27bd 0x6a02b350 0x8ee2c364 0x78743a2f // method \"box_map_set(uint64,(string,uint64,uint64))bool\", method \"box_map_get(uint64)(string,uint64,uint64)\", method \"box_map_exists(uint64)bool\", method \"box_map_delete(uint64)void\"",
+      "defined_out": [
+        "Method(box_map_delete(uint64)void)",
+        "Method(box_map_exists(uint64)bool)",
+        "Method(box_map_get(uint64)(string,uint64,uint64))",
+        "Method(box_map_set(uint64,(string,uint64,uint64))bool)"
+      ],
+      "stack_out": [
+        "Method(box_map_set(uint64,(string,uint64,uint64))bool)",
+        "Method(box_map_get(uint64)(string,uint64,uint64))",
+        "Method(box_map_exists(uint64)bool)",
+        "Method(box_map_delete(uint64)void)"
+      ]
+    },
+    "47": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(box_map_delete(uint64)void)",
+        "Method(box_map_exists(uint64)bool)",
+        "Method(box_map_get(uint64)(string,uint64,uint64))",
+        "Method(box_map_set(uint64,(string,uint64,uint64))bool)",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "Method(box_map_set(uint64,(string,uint64,uint64))bool)",
+        "Method(box_map_get(uint64)(string,uint64,uint64))",
+        "Method(box_map_exists(uint64)bool)",
+        "Method(box_map_delete(uint64)void)",
+        "tmp%2#0"
+      ]
+    },
+    "50": {
+      "op": "match main_box_map_set_route@5 main_box_map_get_route@6 main_box_map_exists_route@7 main_box_map_delete_route@8",
+      "stack_out": []
+    },
+    "60": {
+      "block": "main_after_if_else@11",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "61": {
+      "op": "return",
+      "stack_out": []
+    },
+    "62": {
+      "block": "main_box_map_delete_route@8",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%20#0"
+      ],
+      "stack_out": [
+        "tmp%20#0"
+      ]
+    },
+    "64": {
+      "op": "!",
+      "defined_out": [
+        "tmp%21#0"
+      ],
+      "stack_out": [
+        "tmp%21#0"
+      ]
+    },
+    "65": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "66": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%22#0"
+      ],
+      "stack_out": [
+        "tmp%22#0"
+      ]
+    },
+    "68": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "69": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[8]%3#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[8]%3#0"
+      ]
+    },
+    "72": {
+      "callsub": "smart_contracts.box_storage.contract.Box.box_map_delete",
+      "op": "callsub box_map_delete",
+      "stack_out": []
+    },
+    "75": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "76": {
+      "op": "return",
+      "stack_out": []
+    },
+    "77": {
+      "block": "main_box_map_exists_route@7",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%15#0"
+      ],
+      "stack_out": [
+        "tmp%15#0"
+      ]
+    },
+    "79": {
+      "op": "!",
+      "defined_out": [
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "tmp%16#0"
+      ]
+    },
+    "80": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "81": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%17#0"
+      ],
+      "stack_out": [
+        "tmp%17#0"
+      ]
+    },
+    "83": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "84": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[8]%2#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[8]%2#0"
+      ]
+    },
+    "87": {
+      "callsub": "smart_contracts.box_storage.contract.Box.box_map_exists",
+      "op": "callsub box_map_exists",
+      "defined_out": [
+        "to_encode%1#0"
+      ],
+      "stack_out": [
+        "to_encode%1#0"
+      ]
+    },
+    "90": {
+      "op": "bytec_2 // 0x00",
+      "defined_out": [
+        "0x00",
+        "to_encode%1#0"
+      ],
+      "stack_out": [
+        "to_encode%1#0",
+        "0x00"
+      ]
+    },
+    "91": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0",
+        "0x00",
+        "to_encode%1#0"
+      ],
+      "stack_out": [
+        "to_encode%1#0",
+        "0x00",
+        "0"
+      ]
+    },
+    "92": {
+      "op": "uncover 2",
+      "stack_out": [
+        "0x00",
+        "0",
+        "to_encode%1#0"
+      ]
+    },
+    "94": {
+      "op": "setbit",
+      "defined_out": [
+        "encoded_bool%1#0"
+      ],
+      "stack_out": [
+        "encoded_bool%1#0"
+      ]
+    },
+    "95": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "encoded_bool%1#0"
+      ],
+      "stack_out": [
+        "encoded_bool%1#0",
+        "0x151f7c75"
+      ]
+    },
+    "96": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "encoded_bool%1#0"
+      ]
+    },
+    "97": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "tmp%19#0"
+      ]
+    },
+    "98": {
+      "op": "log",
+      "stack_out": []
+    },
+    "99": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "100": {
+      "op": "return",
+      "stack_out": []
+    },
+    "101": {
+      "block": "main_box_map_get_route@6",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%9#0"
+      ]
+    },
+    "103": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "tmp%10#0"
+      ]
+    },
+    "104": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "105": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "107": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "108": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[8]%1#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[8]%1#0"
+      ]
+    },
+    "111": {
+      "callsub": "smart_contracts.box_storage.contract.Box.box_map_get",
+      "op": "callsub box_map_get",
+      "defined_out": [
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "tmp%13#0"
+      ]
+    },
+    "114": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "tmp%13#0",
+        "0x151f7c75"
+      ]
+    },
+    "115": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "tmp%13#0"
+      ]
+    },
+    "116": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%14#0"
+      ],
+      "stack_out": [
+        "tmp%14#0"
+      ]
+    },
+    "117": {
+      "op": "log",
+      "stack_out": []
+    },
+    "118": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "119": {
+      "op": "return",
+      "stack_out": []
+    },
+    "120": {
+      "block": "main_box_map_set_route@5",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "122": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "123": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "124": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%5#0"
+      ]
+    },
+    "126": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "127": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[8]%0#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[8]%0#0"
+      ]
+    },
+    "130": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "reinterpret_bytes[8]%0#0",
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[8]%0#0",
+        "tmp%7#0"
+      ]
+    },
+    "133": {
+      "callsub": "smart_contracts.box_storage.contract.Box.box_map_set",
+      "op": "callsub box_map_set",
+      "defined_out": [
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0"
+      ]
+    },
+    "136": {
+      "op": "bytec_2 // 0x00",
+      "defined_out": [
+        "0x00",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "0x00"
+      ]
+    },
+    "137": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0",
+        "0x00",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "0x00",
+        "0"
+      ]
+    },
+    "138": {
+      "op": "uncover 2",
+      "stack_out": [
+        "0x00",
+        "0",
+        "to_encode%0#0"
+      ]
+    },
+    "140": {
+      "op": "setbit",
+      "defined_out": [
+        "encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "encoded_bool%0#0"
+      ]
+    },
+    "141": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "encoded_bool%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "142": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "encoded_bool%0#0"
+      ]
+    },
+    "143": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "144": {
+      "op": "log",
+      "stack_out": []
+    },
+    "145": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "146": {
+      "op": "return",
+      "stack_out": []
+    },
+    "147": {
+      "block": "main_bare_routing@9",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%24#0"
+      ],
+      "stack_out": [
+        "tmp%24#0"
+      ]
+    },
+    "149": {
+      "op": "bnz main_after_if_else@11",
+      "stack_out": []
+    },
+    "152": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%25#0"
+      ],
+      "stack_out": [
+        "tmp%25#0"
+      ]
+    },
+    "154": {
+      "op": "!",
+      "defined_out": [
+        "tmp%26#0"
+      ],
+      "stack_out": [
+        "tmp%26#0"
+      ]
+    },
+    "155": {
+      "error": "can only call when creating",
+      "op": "assert // can only call when creating",
+      "stack_out": []
+    },
+    "156": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "157": {
+      "op": "return",
+      "stack_out": []
+    },
+    "158": {
+      "subroutine": "smart_contracts.box_storage.contract.Box.box_map_set",
+      "params": {
+        "key#0": "bytes",
+        "value#0": "bytes"
+      },
+      "block": "box_map_set",
+      "stack_in": [],
+      "op": "proto 2 1"
+    },
+    "161": {
+      "op": "bytec_0 // \"users\"",
+      "defined_out": [
+        "\"users\""
+      ],
+      "stack_out": [
+        "\"users\""
+      ]
+    },
+    "162": {
+      "op": "frame_dig -2",
+      "defined_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ],
+      "stack_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ]
+    },
+    "164": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "165": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ]
+    },
+    "166": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "167": {
+      "op": "bury 1",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "169": {
+      "error": "Key does not exist in box map",
+      "op": "assert // Key does not exist in box map",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "170": {
+      "op": "dup",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ]
+    },
+    "171": {
+      "op": "box_del",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "{box_del}"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "{box_del}"
+      ]
+    },
+    "172": {
+      "op": "pop",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "173": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "value#0 (copy)"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "value#0 (copy)"
+      ]
+    },
+    "175": {
+      "op": "box_put",
+      "stack_out": []
+    },
+    "176": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "177": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "178": {
+      "subroutine": "smart_contracts.box_storage.contract.Box.box_map_get",
+      "params": {
+        "key#0": "bytes"
+      },
+      "block": "box_map_get",
+      "stack_in": [],
+      "op": "proto 1 1"
+    },
+    "181": {
+      "op": "bytec_0 // \"users\"",
+      "defined_out": [
+        "\"users\""
+      ],
+      "stack_out": [
+        "\"users\""
+      ]
+    },
+    "182": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ],
+      "stack_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ]
+    },
+    "184": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "185": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ]
+    },
+    "186": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "187": {
+      "op": "bury 1",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "189": {
+      "error": "Key does not exist in box map",
+      "op": "assert // Key does not exist in box map",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "190": {
+      "op": "box_get",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "191": {
+      "error": "check self.user_map entry exists",
+      "op": "assert // check self.user_map entry exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "192": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "193": {
+      "subroutine": "smart_contracts.box_storage.contract.Box.box_map_exists",
+      "params": {
+        "key#0": "bytes"
+      },
+      "block": "box_map_exists",
+      "stack_in": [],
+      "op": "proto 1 1"
+    },
+    "196": {
+      "op": "bytec_0 // \"users\"",
+      "defined_out": [
+        "\"users\""
+      ],
+      "stack_out": [
+        "\"users\""
+      ]
+    },
+    "197": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ],
+      "stack_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ]
+    },
+    "199": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "200": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "201": {
+      "op": "bury 1",
+      "stack_out": [
+        "maybe_exists%0#0"
+      ]
+    },
+    "203": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "204": {
+      "subroutine": "smart_contracts.box_storage.contract.Box.box_map_delete",
+      "params": {
+        "key#0": "bytes"
+      },
+      "block": "box_map_delete",
+      "stack_in": [],
+      "op": "proto 1 0"
+    },
+    "207": {
+      "op": "bytec_0 // \"users\"",
+      "defined_out": [
+        "\"users\""
+      ],
+      "stack_out": [
+        "\"users\""
+      ]
+    },
+    "208": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ],
+      "stack_out": [
+        "\"users\"",
+        "key#0 (copy)"
+      ]
+    },
+    "210": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "211": {
+      "op": "box_del",
+      "defined_out": [
+        "{box_del}"
+      ],
+      "stack_out": [
+        "{box_del}"
+      ]
+    },
+    "212": {
+      "op": "pop",
+      "stack_out": []
+    },
+    "213": {
+      "retsub": true,
+      "op": "retsub"
+    }
+  }
+}

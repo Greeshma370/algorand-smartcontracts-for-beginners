@@ -1,0 +1,206 @@
+#pragma version 10
+#pragma typetrack false
+
+// smart_contracts.box_storage.contract.Box.__algopy_entrypoint_with_init() -> uint64:
+main:
+    intcblock 1 0
+    bytecblock "users" 0x151f7c75 0x00
+    // smart_contracts/box_storage/contract.py:11
+    // class Box(arc4.ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@9
+    pushbytess 0x079c27bd 0x6a02b350 0x8ee2c364 0x78743a2f // method "box_map_set(uint64,(string,uint64,uint64))bool", method "box_map_get(uint64)(string,uint64,uint64)", method "box_map_exists(uint64)bool", method "box_map_delete(uint64)void"
+    txna ApplicationArgs 0
+    match main_box_map_set_route@5 main_box_map_get_route@6 main_box_map_exists_route@7 main_box_map_delete_route@8
+
+main_after_if_else@11:
+    // smart_contracts/box_storage/contract.py:11
+    // class Box(arc4.ARC4Contract):
+    intc_1 // 0
+    return
+
+main_box_map_delete_route@8:
+    // smart_contracts/box_storage/contract.py:35
+    // @arc4.abimethod
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/box_storage/contract.py:11
+    // class Box(arc4.ARC4Contract):
+    txna ApplicationArgs 1
+    // smart_contracts/box_storage/contract.py:35
+    // @arc4.abimethod
+    callsub box_map_delete
+    intc_0 // 1
+    return
+
+main_box_map_exists_route@7:
+    // smart_contracts/box_storage/contract.py:30
+    // @arc4.abimethod
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/box_storage/contract.py:11
+    // class Box(arc4.ARC4Contract):
+    txna ApplicationArgs 1
+    // smart_contracts/box_storage/contract.py:30
+    // @arc4.abimethod
+    callsub box_map_exists
+    bytec_2 // 0x00
+    intc_1 // 0
+    uncover 2
+    setbit
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_box_map_get_route@6:
+    // smart_contracts/box_storage/contract.py:24
+    // @arc4.abimethod
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/box_storage/contract.py:11
+    // class Box(arc4.ARC4Contract):
+    txna ApplicationArgs 1
+    // smart_contracts/box_storage/contract.py:24
+    // @arc4.abimethod
+    callsub box_map_get
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_box_map_set_route@5:
+    // smart_contracts/box_storage/contract.py:16
+    // @arc4.abimethod
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/box_storage/contract.py:11
+    // class Box(arc4.ARC4Contract):
+    txna ApplicationArgs 1
+    txna ApplicationArgs 2
+    // smart_contracts/box_storage/contract.py:16
+    // @arc4.abimethod
+    callsub box_map_set
+    bytec_2 // 0x00
+    intc_1 // 0
+    uncover 2
+    setbit
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_bare_routing@9:
+    // smart_contracts/box_storage/contract.py:11
+    // class Box(arc4.ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@11
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_0 // 1
+    return
+
+
+// smart_contracts.box_storage.contract.Box.box_map_set(key: bytes, value: bytes) -> uint64:
+box_map_set:
+    // smart_contracts/box_storage/contract.py:16-17
+    // @arc4.abimethod
+    // def box_map_set(self, key: arc4.UInt64, value: UserStruct) -> bool:
+    proto 2 1
+    // smart_contracts/box_storage/contract.py:18-19
+    // # Update the value in the box map
+    // assert key in self.user_map, "Key does not exist in box map"
+    bytec_0 // "users"
+    frame_dig -2
+    concat
+    dup
+    box_len
+    bury 1
+    assert // Key does not exist in box map
+    // smart_contracts/box_storage/contract.py:20
+    // self.user_map[key] = value.copy()
+    dup
+    box_del
+    pop
+    frame_dig -1
+    box_put
+    // smart_contracts/box_storage/contract.py:22
+    // return True
+    intc_0 // 1
+    retsub
+
+
+// smart_contracts.box_storage.contract.Box.box_map_get(key: bytes) -> bytes:
+box_map_get:
+    // smart_contracts/box_storage/contract.py:24-25
+    // @arc4.abimethod
+    // def box_map_get(self, key: arc4.UInt64) -> UserStruct:
+    proto 1 1
+    // smart_contracts/box_storage/contract.py:26-27
+    // # Read the value from the box map
+    // assert key in self.user_map, "Key does not exist in box map"
+    bytec_0 // "users"
+    frame_dig -1
+    concat
+    dup
+    box_len
+    bury 1
+    assert // Key does not exist in box map
+    // smart_contracts/box_storage/contract.py:28
+    // return self.user_map[key]
+    box_get
+    assert // check self.user_map entry exists
+    retsub
+
+
+// smart_contracts.box_storage.contract.Box.box_map_exists(key: bytes) -> uint64:
+box_map_exists:
+    // smart_contracts/box_storage/contract.py:30-31
+    // @arc4.abimethod
+    // def box_map_exists(self, key: arc4.UInt64) -> bool:
+    proto 1 1
+    // smart_contracts/box_storage/contract.py:32-33
+    // # Check if the key exists in box map
+    // return key in self.user_map
+    bytec_0 // "users"
+    frame_dig -1
+    concat
+    box_len
+    bury 1
+    retsub
+
+
+// smart_contracts.box_storage.contract.Box.box_map_delete(key: bytes) -> void:
+box_map_delete:
+    // smart_contracts/box_storage/contract.py:35-36
+    // @arc4.abimethod
+    // def box_map_delete(self, key: arc4.UInt64) -> None:
+    proto 1 0
+    // smart_contracts/box_storage/contract.py:37-38
+    // # Delete the box
+    // del self.user_map[key]
+    bytec_0 // "users"
+    frame_dig -1
+    concat
+    box_del
+    pop
+    retsub
