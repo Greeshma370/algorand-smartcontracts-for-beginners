@@ -1,0 +1,577 @@
+#pragma version 10
+#pragma typetrack false
+
+// smart_contracts.dynamic_array.contract.DynamicArrayContract.__algopy_entrypoint_with_init() -> uint64:
+main:
+    intcblock 0 1 2
+    bytecblock "List" 0x151f7c75 0x0000 ""
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@11
+    pushbytess 0x20df3a54 0x0382ca79 0xe4aca5e7 0x0d0dcb31 0xecc28ac1 0x6db1b5b1 // method "create(string)void", method "add(string,string)void", method "check(string,string)bool", method "get(string)string[]", method "delete(string,string)void", method "delete_section(string)void"
+    txna ApplicationArgs 0
+    match main_create_route@5 main_add_route@6 main_check_route@7 main_get_route@8 main_delete_route@9 main_delete_section_route@10
+
+main_after_if_else@13:
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    intc_0 // 0
+    return
+
+main_delete_section_route@10:
+    // smart_contracts/dynamic_array/contract.py:49
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txna ApplicationArgs 1
+    // smart_contracts/dynamic_array/contract.py:49
+    // @abimethod()
+    callsub delete_section
+    intc_1 // 1
+    return
+
+main_delete_route@9:
+    // smart_contracts/dynamic_array/contract.py:38
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txna ApplicationArgs 1
+    txna ApplicationArgs 2
+    // smart_contracts/dynamic_array/contract.py:38
+    // @abimethod()
+    callsub delete
+    intc_1 // 1
+    return
+
+main_get_route@8:
+    // smart_contracts/dynamic_array/contract.py:33
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txna ApplicationArgs 1
+    // smart_contracts/dynamic_array/contract.py:33
+    // @abimethod()
+    callsub get
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_check_route@7:
+    // smart_contracts/dynamic_array/contract.py:25
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txna ApplicationArgs 1
+    txna ApplicationArgs 2
+    // smart_contracts/dynamic_array/contract.py:25
+    // @abimethod()
+    callsub check
+    pushbytes 0x00
+    intc_0 // 0
+    uncover 2
+    setbit
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_add_route@6:
+    // smart_contracts/dynamic_array/contract.py:14
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txna ApplicationArgs 1
+    txna ApplicationArgs 2
+    // smart_contracts/dynamic_array/contract.py:14
+    // @abimethod()
+    callsub add
+    intc_1 // 1
+    return
+
+main_create_route@5:
+    // smart_contracts/dynamic_array/contract.py:9
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txna ApplicationArgs 1
+    // smart_contracts/dynamic_array/contract.py:9
+    // @abimethod()
+    callsub create
+    intc_1 // 1
+    return
+
+main_bare_routing@11:
+    // smart_contracts/dynamic_array/contract.py:4
+    // class DynamicArrayContract(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@13
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_1 // 1
+    return
+
+
+// _puya_lib.arc4.dynamic_array_concat_byte_length_head(array: bytes, new_items_bytes: bytes, new_items_count: uint64) -> bytes:
+dynamic_array_concat_byte_length_head:
+    proto 3 1
+    frame_dig -3
+    intc_0 // 0
+    extract_uint16
+    dup
+    frame_dig -1
+    +
+    swap
+    intc_2 // 2
+    *
+    intc_2 // 2
+    +
+    dig 1
+    itob
+    extract 6 2
+    cover 2
+    frame_dig -3
+    intc_2 // 2
+    dig 2
+    substring3
+    frame_dig -1
+    intc_2 // 2
+    *
+    bzero
+    concat
+    frame_dig -3
+    len
+    frame_dig -3
+    uncover 3
+    uncover 2
+    substring3
+    concat
+    frame_dig -2
+    concat
+    swap
+    intc_2 // 2
+    *
+    dup
+    intc_0 // 0
+    swap
+
+dynamic_array_concat_byte_length_head_for_header@2:
+    frame_dig 3
+    frame_dig 2
+    <
+    bz dynamic_array_concat_byte_length_head_after_for@5
+    frame_dig 4
+    dup
+    itob
+    extract 6 2
+    frame_dig 1
+    frame_dig 3
+    dup
+    cover 4
+    uncover 2
+    replace3
+    dup
+    frame_bury 1
+    dig 1
+    extract_uint16
+    intc_2 // 2
+    +
+    +
+    frame_bury 4
+    intc_2 // 2
+    +
+    frame_bury 3
+    b dynamic_array_concat_byte_length_head_for_header@2
+
+dynamic_array_concat_byte_length_head_after_for@5:
+    frame_dig 0
+    frame_dig 1
+    concat
+    frame_bury 0
+    retsub
+
+
+// smart_contracts.dynamic_array.contract.DynamicArrayContract.create(section: bytes) -> void:
+create:
+    // smart_contracts/dynamic_array/contract.py:9-10
+    // @abimethod()
+    // def create(self,section: String) -> None:
+    proto 1 0
+    // smart_contracts/dynamic_array/contract.py:11
+    // self.List[section] = DynamicArray[String]()
+    bytec_0 // "List"
+    frame_dig -1
+    concat
+    dup
+    box_del
+    pop
+    bytec_2 // 0x0000
+    box_put
+    retsub
+
+
+// smart_contracts.dynamic_array.contract.DynamicArrayContract.add(section: bytes, name: bytes) -> void:
+add:
+    // smart_contracts/dynamic_array/contract.py:14-15
+    // @abimethod()
+    // def add(self,section: String, name: String) -> None:
+    proto 2 0
+    bytec_3 // ""
+    // smart_contracts/dynamic_array/contract.py:16
+    // assert section in self.List, "dynamic array not created for this respective section"
+    bytec_0 // "List"
+    frame_dig -2
+    concat
+    dupn 2
+    box_len
+    bury 1
+    assert // dynamic array not created for this respective section
+    // smart_contracts/dynamic_array/contract.py:17
+    // exist = False
+    intc_0 // 0
+    swap
+    // smart_contracts/dynamic_array/contract.py:18
+    // for index in urange(self.List[section].length):
+    box_get
+    assert // check self.List entry exists
+    intc_0 // 0
+    extract_uint16
+    intc_0 // 0
+
+add_for_header@1:
+    // smart_contracts/dynamic_array/contract.py:18
+    // for index in urange(self.List[section].length):
+    frame_dig 4
+    frame_dig 3
+    <
+    frame_dig 2
+    frame_bury 0
+    bz add_after_for@6
+    // smart_contracts/dynamic_array/contract.py:19
+    // if self.List[section][index] == name:
+    frame_dig 1
+    box_get
+    assert // check self.List entry exists
+    dup
+    extract 2 0
+    swap
+    intc_0 // 0
+    extract_uint16
+    frame_dig 4
+    dup
+    uncover 2
+    <
+    assert // Index access is out of bounds
+    intc_2 // 2
+    *
+    dig 1
+    swap
+    extract_uint16
+    dup2
+    extract_uint16
+    intc_2 // 2
+    +
+    extract3
+    frame_dig -1
+    ==
+    bz add_after_if_else@4
+    // smart_contracts/dynamic_array/contract.py:20
+    // exist = True
+    intc_1 // 1
+    frame_bury 0
+
+add_after_for@6:
+    frame_dig 0
+    // smart_contracts/dynamic_array/contract.py:22
+    // if not exist:
+    bnz add_after_if_else@8
+    // smart_contracts/dynamic_array/contract.py:23
+    // self.List[section].append(name)
+    frame_dig 1
+    dup
+    box_get
+    assert // check self.List entry exists
+    frame_dig -1
+    intc_1 // 1
+    callsub dynamic_array_concat_byte_length_head
+    dig 1
+    box_del
+    pop
+    box_put
+
+add_after_if_else@8:
+    retsub
+
+add_after_if_else@4:
+    // smart_contracts/dynamic_array/contract.py:18
+    // for index in urange(self.List[section].length):
+    frame_dig 4
+    intc_1 // 1
+    +
+    frame_bury 4
+    b add_for_header@1
+
+
+// smart_contracts.dynamic_array.contract.DynamicArrayContract.check(section: bytes, name: bytes) -> uint64:
+check:
+    // smart_contracts/dynamic_array/contract.py:25-26
+    // @abimethod()
+    // def check(self,section: String, name: String) -> bool:
+    proto 2 1
+    bytec_3 // ""
+    dup
+    // smart_contracts/dynamic_array/contract.py:27
+    // if section in self.List:
+    bytec_0 // "List"
+    frame_dig -2
+    concat
+    dup
+    box_len
+    bury 1
+    bz check_after_if_else@8
+    // smart_contracts/dynamic_array/contract.py:28
+    // for index in urange(self.List[section].length):
+    frame_dig 2
+    box_get
+    assert // check self.List entry exists
+    intc_0 // 0
+    extract_uint16
+    frame_bury 1
+    intc_0 // 0
+    frame_bury 0
+
+check_for_header@2:
+    // smart_contracts/dynamic_array/contract.py:28
+    // for index in urange(self.List[section].length):
+    frame_dig 0
+    frame_dig 1
+    <
+    bz check_after_if_else@8
+    // smart_contracts/dynamic_array/contract.py:29
+    // if self.List[section][index] == name:
+    frame_dig 2
+    box_get
+    assert // check self.List entry exists
+    dup
+    extract 2 0
+    swap
+    intc_0 // 0
+    extract_uint16
+    frame_dig 0
+    dup
+    uncover 2
+    <
+    assert // Index access is out of bounds
+    intc_2 // 2
+    *
+    dig 1
+    swap
+    extract_uint16
+    dup2
+    extract_uint16
+    intc_2 // 2
+    +
+    extract3
+    frame_dig -1
+    ==
+    bz check_after_if_else@5
+    // smart_contracts/dynamic_array/contract.py:30
+    // return True
+    intc_1 // 1
+    frame_bury 0
+    retsub
+
+check_after_if_else@5:
+    // smart_contracts/dynamic_array/contract.py:28
+    // for index in urange(self.List[section].length):
+    frame_dig 0
+    intc_1 // 1
+    +
+    frame_bury 0
+    b check_for_header@2
+
+check_after_if_else@8:
+    // smart_contracts/dynamic_array/contract.py:31
+    // return False
+    intc_0 // 0
+    frame_bury 0
+    retsub
+
+
+// smart_contracts.dynamic_array.contract.DynamicArrayContract.get(section: bytes) -> bytes:
+get:
+    // smart_contracts/dynamic_array/contract.py:33-34
+    // @abimethod()
+    // def get(self,section: String) -> DynamicArray[String]:
+    proto 1 1
+    // smart_contracts/dynamic_array/contract.py:35
+    // assert section in self.List, "dynamic array not created for this respective section"
+    bytec_0 // "List"
+    frame_dig -1
+    concat
+    dup
+    box_len
+    bury 1
+    assert // dynamic array not created for this respective section
+    // smart_contracts/dynamic_array/contract.py:36
+    // return self.List[section]
+    box_get
+    assert // check self.List entry exists
+    retsub
+
+
+// smart_contracts.dynamic_array.contract.DynamicArrayContract.delete(section: bytes, name: bytes) -> void:
+delete:
+    // smart_contracts/dynamic_array/contract.py:38-39
+    // @abimethod()
+    // def delete(self,section: String, name: String) -> None:
+    proto 2 0
+    intc_0 // 0
+    // smart_contracts/dynamic_array/contract.py:40
+    // assert section in self.List, "dynamic array not created for this respective section"
+    bytec_0 // "List"
+    frame_dig -2
+    concat
+    dupn 2
+    box_len
+    bury 1
+    assert // dynamic array not created for this respective section
+    // smart_contracts/dynamic_array/contract.py:41
+    // new_section = DynamicArray[String]()
+    bytec_2 // 0x0000
+    swap
+    // smart_contracts/dynamic_array/contract.py:42-43
+    // # Iterate through the dynamic array and remove the specified name
+    // for index in urange(self.List[section].length):
+    box_get
+    assert // check self.List entry exists
+    intc_0 // 0
+    extract_uint16
+    intc_0 // 0
+
+delete_for_header@1:
+    // smart_contracts/dynamic_array/contract.py:42-43
+    // # Iterate through the dynamic array and remove the specified name
+    // for index in urange(self.List[section].length):
+    frame_dig 4
+    frame_dig 3
+    <
+    bz delete_after_for@6
+    // smart_contracts/dynamic_array/contract.py:44
+    // if self.List[section][index] != name:
+    frame_dig 1
+    box_get
+    assert // check self.List entry exists
+    dup
+    extract 2 0
+    swap
+    intc_0 // 0
+    extract_uint16
+    frame_dig 4
+    dup
+    uncover 2
+    <
+    assert // Index access is out of bounds
+    intc_2 // 2
+    *
+    dig 1
+    swap
+    extract_uint16
+    dup2
+    extract_uint16
+    intc_2 // 2
+    +
+    extract3
+    frame_dig -1
+    !=
+    frame_dig 2
+    frame_bury 0
+    bz delete_after_if_else@4
+    // smart_contracts/dynamic_array/contract.py:45
+    // new_section.append(name)
+    frame_dig 2
+    frame_dig -1
+    intc_1 // 1
+    callsub dynamic_array_concat_byte_length_head
+    frame_bury 0
+
+delete_after_if_else@4:
+    frame_dig 0
+    frame_bury 2
+    // smart_contracts/dynamic_array/contract.py:42-43
+    // # Iterate through the dynamic array and remove the specified name
+    // for index in urange(self.List[section].length):
+    frame_dig 4
+    intc_1 // 1
+    +
+    frame_bury 4
+    b delete_for_header@1
+
+delete_after_for@6:
+    // smart_contracts/dynamic_array/contract.py:47
+    // self.List[section] = new_section.copy()
+    frame_dig 1
+    dup
+    box_del
+    pop
+    frame_dig 2
+    box_put
+    retsub
+
+
+// smart_contracts.dynamic_array.contract.DynamicArrayContract.delete_section(section: bytes) -> void:
+delete_section:
+    // smart_contracts/dynamic_array/contract.py:49-50
+    // @abimethod()
+    // def delete_section(self,section: String) -> None:
+    proto 1 0
+    // smart_contracts/dynamic_array/contract.py:51
+    // assert section in self.List, "dynamic array not created for this respective section"
+    bytec_0 // "List"
+    frame_dig -1
+    concat
+    dup
+    box_len
+    bury 1
+    assert // dynamic array not created for this respective section
+    // smart_contracts/dynamic_array/contract.py:52
+    // del self.List[section]
+    box_del
+    pop
+    retsub
