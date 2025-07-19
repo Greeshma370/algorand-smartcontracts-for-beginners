@@ -1,0 +1,73 @@
+#pragma version 10
+#pragma typetrack false
+
+// smart_contracts.asset_operations.contract.RemintContract.__algopy_entrypoint_with_init() -> uint64:
+main:
+    bytecblock 0x61737365746d6574610000000000000001
+    // smart_contracts/asset_operations/contract.py:16
+    // class RemintContract(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@6
+    pushbytes 0x81e91116 // method "create_asset((uint64,uint32,bool,string,string,string,byte[],address,address,address,address))uint64"
+    txna ApplicationArgs 0
+    match main_create_asset_route@5
+
+main_after_if_else@8:
+    // smart_contracts/asset_operations/contract.py:16
+    // class RemintContract(ARC4Contract):
+    pushint 0 // 0
+    return
+
+main_create_asset_route@5:
+    // smart_contracts/asset_operations/contract.py:21
+    // @arc4.abimethod
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/asset_operations/contract.py:16
+    // class RemintContract(ARC4Contract):
+    txna ApplicationArgs 1
+    // smart_contracts/asset_operations/contract.py:21
+    // @arc4.abimethod
+    callsub create_asset
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    pushint 1 // 1
+    return
+
+main_bare_routing@6:
+    // smart_contracts/asset_operations/contract.py:16
+    // class RemintContract(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@8
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    pushint 1 // 1
+    return
+
+
+// smart_contracts.asset_operations.contract.RemintContract.create_asset(meta: bytes) -> bytes:
+create_asset:
+    // smart_contracts/asset_operations/contract.py:21-22
+    // @arc4.abimethod
+    // def create_asset(self, meta: AssetMetadata) -> arc4.UInt64:
+    proto 1 1
+    // smart_contracts/asset_operations/contract.py:24
+    // self.asset_metadata[new_asset_id] = meta.copy()
+    bytec_0 // 0x61737365746d6574610000000000000001
+    box_del
+    pop
+    bytec_0 // 0x61737365746d6574610000000000000001
+    frame_dig -1
+    box_put
+    // smart_contracts/asset_operations/contract.py:23
+    // new_asset_id = arc4.UInt64(1)  # Placeholder, must be arc4.UInt64
+    pushbytes 0x0000000000000001
+    // smart_contracts/asset_operations/contract.py:25
+    // return new_asset_id
+    retsub

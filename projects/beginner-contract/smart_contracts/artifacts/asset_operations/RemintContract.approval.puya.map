@@ -1,0 +1,287 @@
+{
+  "version": 3,
+  "sources": [
+    "../../asset_operations/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;AAeA;;AAAA;;;AAAA;;;;;;AAAA;;;AAAA;;;;AAAA;;;AAKK;;AAAA;AAAA;AAAA;;AAAA;AALL;;;AAKK;;;AAAA;;;;;;AAAA;AAAA;AAAA;AAAA;;;AALL;;AAAA;;;;;;;;;;AAKA;;;AAGQ;AAAA;;AAAA;AAAA;;AAAA;AADe;;;;;;;;;;AAEf",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "smart_contracts.asset_operations.contract.RemintContract.__algopy_entrypoint_with_init",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "bytecblock 0x61737365746d6574610000000000000001"
+    },
+    "21": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#2"
+      ],
+      "stack_out": [
+        "tmp%0#2"
+      ]
+    },
+    "23": {
+      "op": "bz main_bare_routing@6",
+      "stack_out": []
+    },
+    "26": {
+      "op": "pushbytes 0x81e91116 // method \"create_asset((uint64,uint32,bool,string,string,string,byte[],address,address,address,address))uint64\"",
+      "defined_out": [
+        "Method(create_asset((uint64,uint32,bool,string,string,string,byte[],address,address,address,address))uint64)"
+      ],
+      "stack_out": [
+        "Method(create_asset((uint64,uint32,bool,string,string,string,byte[],address,address,address,address))uint64)"
+      ]
+    },
+    "32": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(create_asset((uint64,uint32,bool,string,string,string,byte[],address,address,address,address))uint64)",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "Method(create_asset((uint64,uint32,bool,string,string,string,byte[],address,address,address,address))uint64)",
+        "tmp%2#0"
+      ]
+    },
+    "35": {
+      "op": "match main_create_asset_route@5",
+      "stack_out": []
+    },
+    "39": {
+      "block": "main_after_if_else@8",
+      "stack_in": [],
+      "op": "pushint 0 // 0",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "41": {
+      "op": "return",
+      "stack_out": []
+    },
+    "42": {
+      "block": "main_create_asset_route@5",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "44": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "45": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "46": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%5#0"
+      ]
+    },
+    "48": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "49": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "52": {
+      "callsub": "smart_contracts.asset_operations.contract.RemintContract.create_asset",
+      "op": "callsub create_asset",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "55": {
+      "op": "pushbytes 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "0x151f7c75"
+      ]
+    },
+    "61": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "tmp%8#0"
+      ]
+    },
+    "62": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%9#0"
+      ]
+    },
+    "63": {
+      "op": "log",
+      "stack_out": []
+    },
+    "64": {
+      "op": "pushint 1 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "66": {
+      "op": "return",
+      "stack_out": []
+    },
+    "67": {
+      "block": "main_bare_routing@6",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "tmp%10#0"
+      ]
+    },
+    "69": {
+      "op": "bnz main_after_if_else@8",
+      "stack_out": []
+    },
+    "72": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "74": {
+      "op": "!",
+      "defined_out": [
+        "tmp%12#0"
+      ],
+      "stack_out": [
+        "tmp%12#0"
+      ]
+    },
+    "75": {
+      "error": "can only call when creating",
+      "op": "assert // can only call when creating",
+      "stack_out": []
+    },
+    "76": {
+      "op": "pushint 1 // 1",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "78": {
+      "op": "return",
+      "stack_out": []
+    },
+    "79": {
+      "subroutine": "smart_contracts.asset_operations.contract.RemintContract.create_asset",
+      "params": {
+        "meta#0": "bytes"
+      },
+      "block": "create_asset",
+      "stack_in": [],
+      "op": "proto 1 1"
+    },
+    "82": {
+      "op": "bytec_0 // 0x61737365746d6574610000000000000001",
+      "defined_out": [
+        "0x61737365746d6574610000000000000001"
+      ],
+      "stack_out": [
+        "0x61737365746d6574610000000000000001"
+      ]
+    },
+    "83": {
+      "op": "box_del",
+      "defined_out": [
+        "{box_del}"
+      ],
+      "stack_out": [
+        "{box_del}"
+      ]
+    },
+    "84": {
+      "op": "pop",
+      "stack_out": []
+    },
+    "85": {
+      "op": "bytec_0 // 0x61737365746d6574610000000000000001",
+      "stack_out": [
+        "0x61737365746d6574610000000000000001"
+      ]
+    },
+    "86": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "0x61737365746d6574610000000000000001",
+        "meta#0 (copy)"
+      ],
+      "stack_out": [
+        "0x61737365746d6574610000000000000001",
+        "meta#0 (copy)"
+      ]
+    },
+    "88": {
+      "op": "box_put",
+      "stack_out": []
+    },
+    "89": {
+      "op": "pushbytes 0x0000000000000001",
+      "defined_out": [
+        "0x0000000000000001"
+      ],
+      "stack_out": [
+        "0x0000000000000001"
+      ]
+    },
+    "99": {
+      "retsub": true,
+      "op": "retsub"
+    }
+  }
+}

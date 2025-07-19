@@ -1,0 +1,166 @@
+{
+    "name": "RemintContract",
+    "structs": {
+        "AssetMetadata": [
+            {
+                "name": "total",
+                "type": "uint64"
+            },
+            {
+                "name": "decimals",
+                "type": "uint32"
+            },
+            {
+                "name": "default_frozen",
+                "type": "bool"
+            },
+            {
+                "name": "unit_name",
+                "type": "string"
+            },
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "url",
+                "type": "string"
+            },
+            {
+                "name": "metadata_hash",
+                "type": "byte[]"
+            },
+            {
+                "name": "manager_addr",
+                "type": "address"
+            },
+            {
+                "name": "reserve_addr",
+                "type": "address"
+            },
+            {
+                "name": "freeze_addr",
+                "type": "address"
+            },
+            {
+                "name": "clawback_addr",
+                "type": "address"
+            }
+        ]
+    },
+    "methods": [
+        {
+            "name": "create_asset",
+            "args": [
+                {
+                    "type": "(uint64,uint32,bool,string,string,string,byte[],address,address,address,address)",
+                    "struct": "AssetMetadata",
+                    "name": "meta"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": false,
+            "events": [],
+            "recommendations": {}
+        }
+    ],
+    "arcs": [
+        22,
+        28
+    ],
+    "networks": {},
+    "state": {
+        "schema": {
+            "global": {
+                "ints": 0,
+                "bytes": 0
+            },
+            "local": {
+                "ints": 0,
+                "bytes": 0
+            }
+        },
+        "keys": {
+            "global": {},
+            "local": {},
+            "box": {}
+        },
+        "maps": {
+            "global": {},
+            "local": {},
+            "box": {
+                "asset_metadata": {
+                    "keyType": "uint64",
+                    "valueType": "AssetMetadata",
+                    "prefix": "YXNzZXRtZXRh"
+                },
+                "user_map": {
+                    "keyType": "string",
+                    "valueType": "uint64",
+                    "prefix": "dXNlcnM="
+                }
+            }
+        }
+    },
+    "bareActions": {
+        "create": [
+            "NoOp"
+        ],
+        "call": []
+    },
+    "sourceInfo": {
+        "approval": {
+            "sourceInfo": [
+                {
+                    "pc": [
+                        45
+                    ],
+                    "errorMessage": "OnCompletion is not NoOp"
+                },
+                {
+                    "pc": [
+                        75
+                    ],
+                    "errorMessage": "can only call when creating"
+                },
+                {
+                    "pc": [
+                        48
+                    ],
+                    "errorMessage": "can only call when not creating"
+                }
+            ],
+            "pcOffsetMethod": "none"
+        },
+        "clear": {
+            "sourceInfo": [],
+            "pcOffsetMethod": "none"
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBzbWFydF9jb250cmFjdHMuYXNzZXRfb3BlcmF0aW9ucy5jb250cmFjdC5SZW1pbnRDb250cmFjdC5fX2FsZ29weV9lbnRyeXBvaW50X3dpdGhfaW5pdCgpIC0+IHVpbnQ2NDoKbWFpbjoKICAgIGJ5dGVjYmxvY2sgMHg2MTczNzM2NTc0NmQ2NTc0NjEwMDAwMDAwMDAwMDAwMDAxCiAgICAvLyBzbWFydF9jb250cmFjdHMvYXNzZXRfb3BlcmF0aW9ucy9jb250cmFjdC5weToxNgogICAgLy8gY2xhc3MgUmVtaW50Q29udHJhY3QoQVJDNENvbnRyYWN0KToKICAgIHR4biBOdW1BcHBBcmdzCiAgICBieiBtYWluX2JhcmVfcm91dGluZ0A2CiAgICBwdXNoYnl0ZXMgMHg4MWU5MTExNiAvLyBtZXRob2QgImNyZWF0ZV9hc3NldCgodWludDY0LHVpbnQzMixib29sLHN0cmluZyxzdHJpbmcsc3RyaW5nLGJ5dGVbXSxhZGRyZXNzLGFkZHJlc3MsYWRkcmVzcyxhZGRyZXNzKSl1aW50NjQiCiAgICB0eG5hIEFwcGxpY2F0aW9uQXJncyAwCiAgICBtYXRjaCBtYWluX2NyZWF0ZV9hc3NldF9yb3V0ZUA1CgptYWluX2FmdGVyX2lmX2Vsc2VAODoKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9hc3NldF9vcGVyYXRpb25zL2NvbnRyYWN0LnB5OjE2CiAgICAvLyBjbGFzcyBSZW1pbnRDb250cmFjdChBUkM0Q29udHJhY3QpOgogICAgcHVzaGludCAwIC8vIDAKICAgIHJldHVybgoKbWFpbl9jcmVhdGVfYXNzZXRfcm91dGVANToKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9hc3NldF9vcGVyYXRpb25zL2NvbnRyYWN0LnB5OjIxCiAgICAvLyBAYXJjNC5hYmltZXRob2QKICAgIHR4biBPbkNvbXBsZXRpb24KICAgICEKICAgIGFzc2VydCAvLyBPbkNvbXBsZXRpb24gaXMgbm90IE5vT3AKICAgIHR4biBBcHBsaWNhdGlvbklECiAgICBhc3NlcnQgLy8gY2FuIG9ubHkgY2FsbCB3aGVuIG5vdCBjcmVhdGluZwogICAgLy8gc21hcnRfY29udHJhY3RzL2Fzc2V0X29wZXJhdGlvbnMvY29udHJhY3QucHk6MTYKICAgIC8vIGNsYXNzIFJlbWludENvbnRyYWN0KEFSQzRDb250cmFjdCk6CiAgICB0eG5hIEFwcGxpY2F0aW9uQXJncyAxCiAgICAvLyBzbWFydF9jb250cmFjdHMvYXNzZXRfb3BlcmF0aW9ucy9jb250cmFjdC5weToyMQogICAgLy8gQGFyYzQuYWJpbWV0aG9kCiAgICBjYWxsc3ViIGNyZWF0ZV9hc3NldAogICAgcHVzaGJ5dGVzIDB4MTUxZjdjNzUKICAgIHN3YXAKICAgIGNvbmNhdAogICAgbG9nCiAgICBwdXNoaW50IDEgLy8gMQogICAgcmV0dXJuCgptYWluX2JhcmVfcm91dGluZ0A2OgogICAgLy8gc21hcnRfY29udHJhY3RzL2Fzc2V0X29wZXJhdGlvbnMvY29udHJhY3QucHk6MTYKICAgIC8vIGNsYXNzIFJlbWludENvbnRyYWN0KEFSQzRDb250cmFjdCk6CiAgICB0eG4gT25Db21wbGV0aW9uCiAgICBibnogbWFpbl9hZnRlcl9pZl9lbHNlQDgKICAgIHR4biBBcHBsaWNhdGlvbklECiAgICAhCiAgICBhc3NlcnQgLy8gY2FuIG9ubHkgY2FsbCB3aGVuIGNyZWF0aW5nCiAgICBwdXNoaW50IDEgLy8gMQogICAgcmV0dXJuCgoKLy8gc21hcnRfY29udHJhY3RzLmFzc2V0X29wZXJhdGlvbnMuY29udHJhY3QuUmVtaW50Q29udHJhY3QuY3JlYXRlX2Fzc2V0KG1ldGE6IGJ5dGVzKSAtPiBieXRlczoKY3JlYXRlX2Fzc2V0OgogICAgLy8gc21hcnRfY29udHJhY3RzL2Fzc2V0X29wZXJhdGlvbnMvY29udHJhY3QucHk6MjEtMjIKICAgIC8vIEBhcmM0LmFiaW1ldGhvZAogICAgLy8gZGVmIGNyZWF0ZV9hc3NldChzZWxmLCBtZXRhOiBBc3NldE1ldGFkYXRhKSAtPiBhcmM0LlVJbnQ2NDoKICAgIHByb3RvIDEgMQogICAgLy8gc21hcnRfY29udHJhY3RzL2Fzc2V0X29wZXJhdGlvbnMvY29udHJhY3QucHk6MjQKICAgIC8vIHNlbGYuYXNzZXRfbWV0YWRhdGFbbmV3X2Fzc2V0X2lkXSA9IG1ldGEuY29weSgpCiAgICBieXRlY18wIC8vIDB4NjE3MzczNjU3NDZkNjU3NDYxMDAwMDAwMDAwMDAwMDAwMQogICAgYm94X2RlbAogICAgcG9wCiAgICBieXRlY18wIC8vIDB4NjE3MzczNjU3NDZkNjU3NDYxMDAwMDAwMDAwMDAwMDAwMQogICAgZnJhbWVfZGlnIC0xCiAgICBib3hfcHV0CiAgICAvLyBzbWFydF9jb250cmFjdHMvYXNzZXRfb3BlcmF0aW9ucy9jb250cmFjdC5weToyMwogICAgLy8gbmV3X2Fzc2V0X2lkID0gYXJjNC5VSW50NjQoMSkgICMgUGxhY2Vob2xkZXIsIG11c3QgYmUgYXJjNC5VSW50NjQKICAgIHB1c2hieXRlcyAweDAwMDAwMDAwMDAwMDAwMDEKICAgIC8vIHNtYXJ0X2NvbnRyYWN0cy9hc3NldF9vcGVyYXRpb25zL2NvbnRyYWN0LnB5OjI1CiAgICAvLyByZXR1cm4gbmV3X2Fzc2V0X2lkCiAgICByZXRzdWIK",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDEwCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBhbGdvcHkuYXJjNC5BUkM0Q29udHJhY3QuY2xlYXJfc3RhdGVfcHJvZ3JhbSgpIC0+IHVpbnQ2NDoKbWFpbjoKICAgIHB1c2hpbnQgMSAvLyAxCiAgICByZXR1cm4K"
+    },
+    "byteCode": {
+        "approval": "CiYBEWFzc2V0bWV0YQAAAAAAAAABMRtBACmABIHpERY2GgCOAQADgQBDMRkURDEYRDYaAYgAGIAEFR98dUxQsIEBQzEZQP/fMRgURIEBQ4oBASi8SCiL/7+ACAAAAAAAAAABiQ==",
+        "clear": "CoEBQw=="
+    },
+    "compilerInfo": {
+        "compiler": "puya",
+        "compilerVersion": {
+            "major": 4,
+            "minor": 9,
+            "patch": 0
+        }
+    },
+    "events": [],
+    "templateVariables": {}
+}
