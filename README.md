@@ -131,7 +131,28 @@ Methods:
 
 ---
 
-## 10. `Multisig ASA Creation and Configuration on Algorand`
+## 10. `DynamicArrayContract` – Dynamic List Storage with BoxMap
+**Purpose**: Demonstrates how to manage dynamic lists of strings on-chain using BoxMap and DynamicArray in ARC-4 smart contracts. Each list is stored under a unique string key.
+
+**Methods**:
+
+`create(section)` → Initializes an empty dynamic array under the specified section.
+
+`add(section, name)` → Adds a name to the array for that section, if it doesn’t already exist.
+
+`check(section, name)` → Returns True if the name exists in the given section.
+
+`get(section)` → Returns the entire list of names stored under the specified section.
+
+`delete(section, name)` → Removes the name from the specified section list.
+
+`delete_section(section)` → Deletes the entire array associated with the section.
+
+[check the contract here](./projects/beginner-contract/smart_contracts/dynamic_array/contract.py)
+
+---
+
+## 11. `Multisig ASA Creation and Configuration on Algorand`
 
 **Purpose**: A basic example to demonstrate basic multisig accounts operations.
 
