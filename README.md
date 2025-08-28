@@ -17,7 +17,7 @@ assert Txn.sender == Global.creator_address
 **Method**:
 
 * `check()` → Ensures only the creator can execute it, logs a message upon success.
-* 
+  
 [check the contract here](./projects/beginner-contract/smart_contracts/creator_only/contract.py)
 
 ---
@@ -30,7 +30,7 @@ assert Txn.sender == Global.creator_address
 
 * `call()` → Can be called only once. Sets counter from 0 to 1.
 * `reset()` → Only the creator can reset the counter back to 0.
-* 
+  
 [check the contract here](./projects/beginner-contract/smart_contracts/first_person_only/contract.py)
 
 ---
@@ -45,7 +45,7 @@ assert Txn.sender == Global.creator_address
 * `decrement()` → Decreases counter if non-zero, logs sender.
 * `get()` → Returns the current counter.
 * `get_address()` → Returns the last address that changed the value.
-* 
+  
 [check the contract here](./projects/beginner-contract/smart_contracts/global_storage/contract.py)
 
 ---
@@ -59,7 +59,7 @@ assert Txn.sender == Global.creator_address
 * `set_value(account, value)` → Sets a number in local state.
 * `get_value(account)` → Retrieves stored number.
 * `clear_value(account)` → Deletes stored number from local state.
-* 
+  
 [check the contract here](./projects/beginner-contract/smart_contracts/local_storage/contract.py)
 
 ---
@@ -71,7 +71,7 @@ assert Txn.sender == Global.creator_address
 **Method**:
 
 * `fund()` → Checks contract balance and sends 1 Algo to the caller if sufficient funds exist.
-* 
+  
 [check the contract here](./projects/beginner-contract/smart_contracts/token_faucet/contract.py)
 
 ---
@@ -82,9 +82,9 @@ assert Txn.sender == Global.creator_address
 
 **Methods**:
 
-add(name, account) → Only creator can add an account under a given name. Prevents duplicates.
+`add(name, account)` → Only creator can add an account under a given name. Prevents duplicates.
 
-check(name, account) → Returns True if the account exists under the name.
+`check(name, account)` → Returns True if the account exists under the name.
 
 [check the contract here](./projects/beginner-contract/smart_contracts/whitelist_access/contract.py)
 
@@ -95,13 +95,13 @@ check(name, account) → Returns True if the account exists under the name.
 
 Methods:
 
-box_map_set(key, value) → Updates a UserStruct value in the BoxMap if key exists.
+`box_map_set(key, value)` → Updates a UserStruct value in the BoxMap if key exists.
 
-box_map_get(key) → Retrieves a stored struct using the key.
+`box_map_get(key)` → Retrieves a stored struct using the key.
 
-box_map_exists(key) → Checks if a key exists.
+`box_map_exists(key)` → Checks if a key exists.
 
-box_map_delete(key) → Deletes the box for the specified key.
+`box_map_delete(key)` → Deletes the box for the specified key.
 
 [check the contract here](./projects/beginner-contract/smart_contracts/box_storage/contract.py)
 
@@ -112,11 +112,61 @@ box_map_delete(key) → Deletes the box for the specified key.
 
 **Methods**:
 
-approval_program() → Logs "hey there" to the transaction log.
+`approval_program()` → Logs "hey there" to the transaction log.
 
-clear_state_program() → Default clear logic.
+`clear_state_program()` → Default clear logic.
 
 [check the contract here](./projects/beginner-contract/smart_contracts/noop_logger/contract.py)
+
+---
+
+## 9. `Asset Creation` – Creates Assets
+**Purpose**: A basic example to demonstrate asset creation.
+
+**Methods**:
+
+`create_asset()` → Creates assets for the given metadata. 
+
+[check the contract here](./projects/beginner-contract/smart_contracts/asset_operations/contract.py)
+
+---
+
+## 10. `DynamicArrayContract` – Dynamic List Storage with BoxMap
+**Purpose**: Demonstrates how to manage dynamic lists of strings on-chain using BoxMap and DynamicArray in ARC-4 smart contracts. Each list is stored under a unique string key.
+
+**Methods**:
+
+`create(section)` → Initializes an empty dynamic array under the specified section.
+
+`add(section, name)` → Adds a name to the array for that section, if it doesn’t already exist.
+
+`check(section, name)` → Returns True if the name exists in the given section.
+
+`get(section)` → Returns the entire list of names stored under the specified section.
+
+`delete(section, name)` → Removes the name from the specified section list.
+
+`delete_section(section)` → Deletes the entire array associated with the section.
+
+[check the contract here](./projects/beginner-contract/smart_contracts/dynamic_array/contract.py)
+
+---
+
+## 11. `Multisig ASA Creation and Configuration on Algorand`
+
+**Purpose**: A basic example to demonstrate basic multisig accounts operations.
+
+Generates 3 random accounts
+
+Funds them from LocalNet’s dispenser
+
+Creates a 2-of-3 multisig account
+
+Deploys an ASA using that multisig account
+
+Reconfigures the freeze address of the ASA via a multisig transaction
+
+[check the contract here](./projects/beginner-contract/smart_contracts/multisig_accounts/multisig.py)
 
 ---
 
